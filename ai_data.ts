@@ -1,0 +1,339 @@
+
+export const RAW_DATA = [
+  {
+    "id": "transformer",
+    "company": "Google",
+    "releaseDate": "2017-06-12",
+    "params": "-",
+    "highlight": true,
+    "importance": 5,
+    "capabilities": ["NLP"],
+    "source": "https://arxiv.org/abs/1706.03762",
+    "en": {
+      "name": "Attention Is All You Need",
+      "description": "The paper that introduced the Transformer architecture, laying the foundation for modern LLMs.",
+      "coreTech": "Self-Attention Mechanism",
+      "features": ["Parallel processing", "Long-range dependency handling", "Scalable architecture"],
+      "useCases": ["Machine Translation", "Text Summarization", "Sequence Modeling"]
+    },
+    "zh": {
+      "name": "Attention Is All You Need (论文)",
+      "description": "提出了Transformer架构的开创性论文，为现代大语言模型奠定了基础。",
+      "coreTech": "自注意力机制 (Self-Attention)",
+      "features": ["并行处理能力", "长距离依赖处理", "可扩展架构"],
+      "useCases": ["机器翻译", "文本摘要", "序列建模"]
+    }
+  },
+  {
+    "id": "bert",
+    "company": "Google",
+    "releaseDate": "2018-10-11",
+    "params": "340M",
+    "highlight": false,
+    "importance": 4,
+    "capabilities": ["NLP"],
+    "source": "https://arxiv.org/abs/1810.04805",
+    "en": {
+      "name": "BERT",
+      "description": "Bidirectional Encoder Representations from Transformers. Revolutionized NLP tasks.",
+      "coreTech": "Masked Language Modeling (MLM)",
+      "features": ["Bidirectional context", "Fine-tuning capability", "Deep context understanding"],
+      "useCases": ["Search Engine Ranking", "Sentiment Analysis", "Question Answering"]
+    },
+    "zh": {
+      "name": "BERT",
+      "description": "基于Transformer的双向编码器表示，彻底改变了自然语言处理任务。",
+      "coreTech": "掩码语言模型 (MLM)",
+      "features": ["双向上下文理解", "微调能力", "深度语义理解"],
+      "useCases": ["搜索引擎排名", "情感分析", "问答系统"]
+    }
+  },
+  {
+    "id": "gpt-2",
+    "company": "OpenAI",
+    "releaseDate": "2019-02-14",
+    "params": "1.5B",
+    "highlight": false,
+    "importance": 3,
+    "capabilities": ["NLP"],
+    "source": "https://openai.com/research/better-language-models",
+    "en": {
+      "name": "GPT-2",
+      "description": "Demonstrated that scaling up language models improves performance significantly.",
+      "coreTech": "Transformer Decoder",
+      "features": ["Zero-shot task transfer", "Coherent text generation", "Large-scale training"],
+      "useCases": ["Text Completion", "Creative Writing", "Content Generation"]
+    },
+    "zh": {
+      "name": "GPT-2",
+      "description": "证明了扩大语言模型的规模可以显著提高性能。",
+      "coreTech": "Transformer 解码器",
+      "features": ["零样本任务迁移", "连贯文本生成", "大规模训练"],
+      "useCases": ["文本补全", "创意写作", "内容生成"]
+    }
+  },
+  {
+    "id": "gpt-3",
+    "company": "OpenAI",
+    "releaseDate": "2020-06-11",
+    "params": "175B",
+    "highlight": true,
+    "importance": 5,
+    "capabilities": ["NLP", "Code"],
+    "source": "https://arxiv.org/abs/2005.14165",
+    "en": {
+      "name": "GPT-3",
+      "description": "A massive 175B parameter model that showed few-shot learning capabilities.",
+      "coreTech": "Sparse Transformer",
+      "features": ["Few-shot learning", "Meta-learning", "Massive scale"],
+      "useCases": ["Chatbots", "Code Generation", "Translation", "Gaming"]
+    },
+    "zh": {
+      "name": "GPT-3",
+      "description": "拥有1750亿参数的庞大模型，展示了惊人的少样本学习能力。",
+      "coreTech": "稀疏 Transformer",
+      "features": ["少样本学习", "元学习", "超大规模"],
+      "useCases": ["聊天机器人", "代码生成", "翻译", "游戏对话"]
+    }
+  },
+  {
+    "id": "chatgpt",
+    "company": "OpenAI",
+    "releaseDate": "2022-11-30",
+    "params": "Unknown",
+    "highlight": true,
+    "importance": 5,
+    "capabilities": ["NLP", "Code"],
+    "source": "https://openai.com/blog/chatgpt",
+    "en": {
+      "name": "ChatGPT (3.5)",
+      "description": "The chatbot that brought LLMs to the general public via RLHF.",
+      "coreTech": "RLHF (Reinforcement Learning from Human Feedback)",
+      "features": ["Conversational context", "Safety alignment", "Instruction following"],
+      "useCases": ["Personal Assistant", "Drafting Emails", "Education"]
+    },
+    "zh": {
+      "name": "ChatGPT (3.5)",
+      "description": "通过RLHF技术将大语言模型带给大众的现象级聊天机器人。",
+      "coreTech": "RLHF (基于人类反馈的强化学习)",
+      "features": ["对话上下文保持", "安全对齐", "指令遵循"],
+      "useCases": ["个人助理", "邮件起草", "教育辅导"]
+    }
+  },
+  {
+    "id": "llama-1",
+    "company": "Meta",
+    "releaseDate": "2023-02-24",
+    "params": "65B",
+    "highlight": true,
+    "importance": 5,
+    "capabilities": ["NLP"],
+    "source": "https://ai.meta.com/blog/large-language-model-llama-meta-ai/",
+    "en": {
+      "name": "LLaMA",
+      "description": "Foundational open-weights model that sparked the open-source LLM community.",
+      "coreTech": "Efficient Transformer (SwiGLU)",
+      "features": ["Open research access", "High efficiency per parameter", "Training stability"],
+      "useCases": ["Research", "Model Fine-tuning", "On-premise deployment"]
+    },
+    "zh": {
+      "name": "LLaMA",
+      "description": "点燃开源LLM社区热情的基石级开放权重模型。",
+      "coreTech": "高效 Transformer (SwiGLU)",
+      "features": ["开放研究访问", "高参数效率", "训练稳定性"],
+      "useCases": ["学术研究", "模型微调", "本地部署"]
+    }
+  },
+  {
+    "id": "gpt-4",
+    "company": "OpenAI",
+    "releaseDate": "2023-03-14",
+    "params": "Undisclosed",
+    "highlight": true,
+    "importance": 5,
+    "capabilities": ["Multimodal", "NLP", "CV", "Code"],
+    "source": "https://openai.com/research/gpt-4",
+    "en": {
+      "name": "GPT-4",
+      "description": "Multimodal model with human-level performance on various professional benchmarks.",
+      "coreTech": "MoE (Mixture of Experts)",
+      "features": ["Visual input analysis", "Advanced reasoning", "Large context window"],
+      "useCases": ["Professional exams", "Complex coding", "Image analysis"]
+    },
+    "zh": {
+      "name": "GPT-4",
+      "description": "在多项专业基准测试中达到人类水平的多模态模型。",
+      "coreTech": "MoE (混合专家模型)",
+      "features": ["视觉输入分析", "高级推理能力", "长上下文窗口"],
+      "useCases": ["专业考试", "复杂编程", "图像分析"]
+    }
+  },
+  {
+    "id": "claude-1",
+    "company": "Anthropic",
+    "releaseDate": "2023-03-14",
+    "params": "Unknown",
+    "highlight": false,
+    "importance": 3,
+    "capabilities": ["NLP"],
+    "source": "https://www.anthropic.com/news/introducing-claude",
+    "en": {
+      "name": "Claude",
+      "description": "First release from Anthropic, focusing on helpfulness and safety (Constitutional AI).",
+      "coreTech": "Constitutional AI",
+      "features": ["High steerability", "Safety guardrails", "Large context"],
+      "useCases": ["Document summarization", "Safe corporate chat", "Legal analysis"]
+    },
+    "zh": {
+      "name": "Claude",
+      "description": "Anthropic的首款产品，专注于有用性和安全性（宪法AI）。",
+      "coreTech": "宪法AI (Constitutional AI)",
+      "features": ["高可控性", "安全护栏", "长文本支持"],
+      "useCases": ["文档摘要", "安全企业对话", "法律分析"]
+    }
+  },
+  {
+    "id": "gemini-1",
+    "company": "Google",
+    "releaseDate": "2023-12-06",
+    "params": "Various",
+    "highlight": true,
+    "importance": 4,
+    "capabilities": ["Multimodal", "NLP", "CV", "Audio", "Video", "Code"],
+    "source": "https://blog.google/technology/ai/google-gemini-ai/",
+    "en": {
+      "name": "Gemini 1.0",
+      "description": "Natively multimodal model built from the ground up for seamless reasoning across text, images, and audio.",
+      "coreTech": "Native Multimodal Architecture",
+      "features": ["Native audio/video understanding", "Sophisticated reasoning", "Efficient scaling (Nano/Pro/Ultra)"],
+      "useCases": ["Video understanding", "Multimodal interaction", "Scientific reasoning"]
+    },
+    "zh": {
+      "name": "Gemini 1.0",
+      "description": "原生多模态模型，从底层构建，可跨文本、图像和音频进行无缝推理。",
+      "coreTech": "原生多模态架构",
+      "features": ["原生音视频理解", "复杂推理", "高效扩展 (Nano/Pro/Ultra)"],
+      "useCases": ["视频理解", "多模态交互", "科学推理"]
+    }
+  },
+  {
+    "id": "sora",
+    "company": "OpenAI",
+    "releaseDate": "2024-02-15",
+    "params": "Unknown",
+    "highlight": true,
+    "importance": 4,
+    "capabilities": ["Video", "CV"],
+    "source": "https://openai.com/sora",
+    "en": {
+      "name": "Sora",
+      "description": "Text-to-video model capable of generating highly realistic and imaginative scenes.",
+      "coreTech": "Diffusion Transformer",
+      "features": ["Physics simulation", "60s video generation", "Consistency"],
+      "useCases": ["Video production", "Creative design", "Simulation"]
+    },
+    "zh": {
+      "name": "Sora",
+      "description": "能够生成高度逼真和富有想象力场景的文生视频模型。",
+      "coreTech": "扩散 Transformer (DiT)",
+      "features": ["物理世界模拟", "60秒长视频", "画面一致性"],
+      "useCases": ["视频制作", "创意设计", "模拟仿真"]
+    }
+  },
+  {
+    "id": "gemini-1.5",
+    "company": "Google",
+    "releaseDate": "2024-02-15",
+    "params": "Unknown",
+    "highlight": true,
+    "importance": 4,
+    "capabilities": ["Multimodal", "NLP", "CV", "Audio", "Video", "Code"],
+    "source": "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/",
+    "en": {
+      "name": "Gemini 1.5 Pro",
+      "description": "Introduced massive context window (1M+ tokens), enabling analysis of vast amounts of information.",
+      "coreTech": "MoE + Long Context Architecture",
+      "features": ["1M+ Token Context", "In-context learning", "Cross-modal reasoning"],
+      "useCases": ["Full codebase analysis", "Movie analysis", "Large document extraction"]
+    },
+    "zh": {
+      "name": "Gemini 1.5 Pro",
+      "description": "引入了百万级Token的超长上下文窗口，能够分析海量信息。",
+      "coreTech": "MoE + 长上下文架构",
+      "features": ["100万+ Token 上下文", "上下文学习", "跨模态推理"],
+      "useCases": ["全库代码分析", "电影内容分析", "大文档提取"]
+    }
+  },
+  {
+    "id": "llama-3",
+    "company": "Meta",
+    "releaseDate": "2024-04-18",
+    "params": "8B / 70B / 400B+",
+    "highlight": true,
+    "importance": 4,
+    "capabilities": ["NLP", "Code"],
+    "source": "https://ai.meta.com/blog/meta-llama-3/",
+    "en": {
+      "name": "Llama 3",
+      "description": "Significant leap in capability for open-weights models.",
+      "coreTech": "Optimized Dense Transformer",
+      "features": ["Improved tokenizer", "GQA efficiency", "High reasoning benchmarks"],
+      "useCases": ["Open source development", "Local AI agents", "Text classification"]
+    },
+    "zh": {
+      "name": "Llama 3",
+      "description": "开放权重模型能力的巨大飞跃。",
+      "coreTech": "优化密集 Transformer",
+      "features": ["改进的分词器", "GQA 效率", "高推理基准分"],
+      "useCases": ["开源开发", "本地 AI 智能体", "文本分类"]
+    }
+  },
+  {
+    "id": "gpt-4o",
+    "company": "OpenAI",
+    "releaseDate": "2024-05-13",
+    "params": "Unknown",
+    "highlight": true,
+    "importance": 4,
+    "capabilities": ["Multimodal", "NLP", "CV", "Audio", "Video"],
+    "source": "https://openai.com/index/hello-gpt-4o/",
+    "en": {
+      "name": "GPT-4o",
+      "description": "Flagship \"omni\" model with real-time audio, vision, and text capabilities.",
+      "coreTech": "End-to-end Multimodal Omni",
+      "features": ["Real-time audio response", "Emotional intonation", "Faster inference"],
+      "useCases": ["Real-time translation", "Voice assistant", "Vision interaction"]
+    },
+    "zh": {
+      "name": "GPT-4o",
+      "description": "旗舰级\"全能\"模型，具备实时音频、视觉和文本处理能力。",
+      "coreTech": "端到端全模态模型",
+      "features": ["实时音频响应", "情感语调", "更快的推理速度"],
+      "useCases": ["实时翻译", "语音助手", "视觉交互"]
+    }
+  },
+  {
+    "id": "gemini-2.5",
+    "company": "Google",
+    "releaseDate": "2025-01-20",
+    "params": "Unknown",
+    "highlight": true,
+    "importance": 5,
+    "capabilities": ["Multimodal", "NLP", "Code"],
+    "source": "https://blog.google/technology/google-deepmind/",
+    "en": {
+      "name": "Gemini 2.5",
+      "description": "Next generation efficiency and reasoning capabilities.",
+      "coreTech": "Thinking & Reasoning Engine",
+      "features": ["Enhanced thinking process", "Controllable thinking budget", "Superior coding"],
+      "useCases": ["Complex problem solving", "Agentic workflows", "Real-time adaptation"]
+    },
+    "zh": {
+      "name": "Gemini 2.5",
+      "description": "下一代效率和推理能力。",
+      "coreTech": "思考与推理引擎",
+      "features": ["增强的思考过程", "可控的思考预算", "卓越的编程能力"],
+      "useCases": ["复杂问题解决", "智能体工作流", "实时适应"]
+    }
+  }
+];
