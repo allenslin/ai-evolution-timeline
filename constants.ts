@@ -1,19 +1,30 @@
 
 import { AIModel, Company, Language, UIText } from './types';
-import { RAW_DATA as rawData } from './ai_data';
+import rawData from './ai_data.json';
 
 // Type assertion for the imported data to match our internal types
-const RAW_DATA = rawData as unknown as Array<{
+const RAW_DATA = rawData as Array<{
   id: string;
   company: string; // Will be cast to Company
   releaseDate: string;
   params: string;
   highlight: boolean;
-  importance: number;
   capabilities: string[];
   source?: string;
-  en: any;
-  zh: any;
+  en: {
+    name: string;
+    description: string;
+    coreTech: string;
+    features: string[];
+    useCases: string[];
+  };
+  zh: {
+    name: string;
+    description: string;
+    coreTech: string;
+    features: string[];
+    useCases: string[];
+  };
 }>;
 
 export const getAIModels = (lang: Language): AIModel[] => {
@@ -23,7 +34,7 @@ export const getAIModels = (lang: Language): AIModel[] => {
     releaseDate: item.releaseDate,
     params: item.params,
     highlight: item.highlight,
-    importance: item.importance,
+    importance: 3, // Default importance value since it's not in JSON
     capabilities: item.capabilities as any,
     source: item.source,
     // Localized fields

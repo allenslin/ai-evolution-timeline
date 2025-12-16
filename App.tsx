@@ -1,3 +1,4 @@
+
 import React, { useState, useMemo, useEffect } from 'react';
 import { Timeline } from './components/Timeline';
 import { DetailPanel } from './components/DetailPanel';
@@ -31,7 +32,7 @@ const App: React.FC = () => {
 
   // Derived Data for Filters
   const years = useMemo(() => {
-    const uniqueYears = Array.from(new Set(models.map(m => m.releaseDate.split('-')[0]))).sort();
+    const uniqueYears = Array.from(new Set(models.map(m => m.releaseDate.split('-')[0]))).sort().reverse(); // Recent years first
     return ['All', ...uniqueYears];
   }, [models]);
 
@@ -54,15 +55,19 @@ const App: React.FC = () => {
       const matchCapability = selectedCapability === 'All' || (model.capabilities && model.capabilities.includes(selectedCapability as Capability));
 
       return matchSearch && matchCompany && matchYear && matchCapability;
-    }).sort((a, b) => new Date(a.releaseDate).getTime() - new Date(b.releaseDate).getTime());
+    }).sort((a, b) => new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()); // Reverse Chronological
   }, [models, searchQuery, selectedCompany, selectedYear, selectedCapability]);
 
   const activeFilters = selectedCompany !== 'All' || selectedYear !== 'All' || selectedCapability !== 'All' || searchQuery !== '';
 
   return (
-    <div className="h-screen w-screen flex flex-col bg-paper-50 dark:bg-cyber-900 text-slate-800 dark:text-slate-200 overflow-hidden font-sans transition-colors duration-500">
+    <div className="h-screen w-screen flex flex-col bg-paper-50 dark:bg-cyber-900 text-slate-800 dark:text-slate-200 font-sans transition-colors duration-500 overflow-hidden relative">
+      
+      {/* Background Grid Layer - Moved out of scrolling content to prevent masking content */}
+      <div className="absolute inset-0 pointer-events-none z-0 tech-grid"></div>
+
       {/* Header */}
-      <header className="flex-none h-16 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-6 bg-white/80 dark:bg-cyber-900/80 backdrop-blur z-50 shadow-sm dark:shadow-lg relative transition-colors duration-500">
+      <header className="flex-none h-16 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-6 bg-white/80 dark:bg-cyber-900/80 backdrop-blur z-30 shadow-sm dark:shadow-lg relative transition-colors duration-500">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded bg-gradient-to-br from-cyan-500 to-purple-600 flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.4)]">
             <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -76,20 +81,6 @@ const App: React.FC = () => {
         </div>
         
         <div className="flex items-center gap-4">
-             {/* Simple Top Status - Hidden on small screens */}
-            <div className="hidden md:flex items-center gap-6 text-xs font-mono text-slate-500">
-                <div className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-[pulse_2s_infinite]"></span>
-                    <span className="tracking-widest">{ui.systemOnline}</span>
-                </div>
-                <div className="px-3 py-1 border border-slate-200 dark:border-slate-800 rounded bg-slate-100/50 dark:bg-slate-900/50 backdrop-blur flex items-center gap-2 transition-colors">
-                    <span className="text-cyan-600 dark:text-cyan-500">{filteredModels.length}</span> {ui.nodesActive}
-                </div>
-            </div>
-
-            <div className="h-6 w-px bg-slate-200 dark:bg-slate-800 mx-2"></div>
-
-            {/* Settings Toggles */}
             <div className="flex items-center gap-2">
                 <button 
                     onClick={() => setLang(l => l === 'en' ? 'zh' : 'en')}
@@ -112,12 +103,11 @@ const App: React.FC = () => {
       </header>
 
       {/* Filter Bar */}
-      <div className="flex-none bg-slate-50/50 dark:bg-slate-950/50 border-b border-slate-200 dark:border-slate-800/60 backdrop-blur-md z-40 p-3 transition-colors duration-500">
-        <div className="max-w-full mx-auto flex flex-wrap gap-4 items-center justify-between">
-            
-            <div className="flex flex-wrap gap-3 items-center w-full md:w-auto">
+      <div className="flex-none bg-slate-50/50 dark:bg-slate-950/50 border-b border-slate-200 dark:border-slate-800/60 backdrop-blur-md z-20 p-3 transition-colors duration-500">
+        <div className="max-w-5xl mx-auto flex flex-wrap gap-4 items-center justify-between">
+            <div className="flex flex-wrap gap-3 items-center w-full">
                  {/* Search */}
-                <div className="relative group w-full md:w-64">
+                <div className="relative group flex-grow md:flex-grow-0 md:w-64">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <svg className="w-4 h-4 text-slate-400 dark:text-slate-600 group-focus-within:text-cyan-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
@@ -130,68 +120,52 @@ const App: React.FC = () => {
                     />
                 </div>
 
-                <div className="h-6 w-px bg-slate-200 dark:bg-slate-800 hidden md:block"></div>
-
-                {/* Custom Selects */}
-                <div className="relative group">
+                {/* Filters Row */}
+                <div className="flex gap-2 overflow-x-auto pb-1 md:pb-0 no-scrollbar">
                     <select 
-                        className="appearance-none block w-32 pl-3 pr-8 py-1.5 text-xs border border-slate-200 dark:border-slate-800 rounded bg-white dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                        className="appearance-none block w-28 pl-3 pr-8 py-1.5 text-xs border border-slate-200 dark:border-slate-800 rounded bg-white dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                         value={selectedCompany}
                         onChange={(e) => setSelectedCompany(e.target.value as Company | 'All')}
                     >
-                        <option value="All">{ui.filterCompany}: All</option>
+                        <option value="All">{ui.filterCompany}</option>
                         {companies.filter(c => c !== 'All').map(c => <option key={c} value={c}>{c}</option>)}
                     </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
-                         <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </div>
-                </div>
 
-                <div className="relative group">
                     <select 
-                        className="appearance-none block w-32 pl-3 pr-8 py-1.5 text-xs border border-slate-200 dark:border-slate-800 rounded bg-white dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+                        className="appearance-none block w-28 pl-3 pr-8 py-1.5 text-xs border border-slate-200 dark:border-slate-800 rounded bg-white dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                         value={selectedCapability}
                         onChange={(e) => setSelectedCapability(e.target.value as Capability | 'All')}
                     >
-                        <option value="All">{ui.filterCap}: All</option>
+                        <option value="All">{ui.filterCap}</option>
                         {capabilities.filter(c => c !== 'All').map(c => <option key={c} value={c}>{c}</option>)}
                     </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
-                         <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </div>
-                </div>
 
-                <div className="relative group">
                     <select 
                         className="appearance-none block w-24 pl-3 pr-8 py-1.5 text-xs border border-slate-200 dark:border-slate-800 rounded bg-white dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 focus:outline-none focus:border-cyan-500/50 focus:ring-1 focus:ring-cyan-500/50 cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                         value={selectedYear}
                         onChange={(e) => setSelectedYear(e.target.value)}
                     >
-                        <option value="All">{ui.filterYear}: All</option>
+                        <option value="All">{ui.filterYear}</option>
                         {years.filter(y => y !== 'All').map(y => <option key={y} value={y}>{y}</option>)}
                     </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
-                         <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </div>
                 </div>
+                
+                 {activeFilters && (
+                    <button 
+                        onClick={() => { setSearchQuery(''); setSelectedCompany('All'); setSelectedCapability('All'); setSelectedYear('All'); }}
+                        className="ml-auto md:ml-0 px-3 py-1.5 text-[10px] font-mono tracking-wider text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 rounded hover:bg-cyan-500/10 transition-all flex items-center gap-2"
+                     >
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        {ui.resetFilters}
+                     </button>
+                )}
             </div>
-
-            {activeFilters && (
-                <button 
-                    onClick={() => { setSearchQuery(''); setSelectedCompany('All'); setSelectedCapability('All'); setSelectedYear('All'); }}
-                    className="px-3 py-1.5 text-[10px] font-mono tracking-wider text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 rounded hover:bg-cyan-500/10 transition-all flex items-center gap-2 group"
-                 >
-                    <svg className="w-3 h-3 group-hover:-rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-                    {ui.resetFilters}
-                 </button>
-            )}
         </div>
       </div>
 
-      {/* Main Content Area */}
-      <main className="flex-grow flex flex-col relative overflow-hidden">
-        {/* Timeline Section (Top Half) */}
-        <div className={`transition-all duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)] ${selectedModel ? 'h-[45%]' : 'h-full'}`}>
+      {/* Main Content Area - Full Page Scroll */}
+      <main className="flex-grow relative overflow-y-auto custom-scrollbar scroll-smooth z-10">
+        <div className="min-h-full">
             {filteredModels.length > 0 ? (
                  <Timeline 
                     models={filteredModels} 
@@ -200,7 +174,7 @@ const App: React.FC = () => {
                     ui={ui}
                 />
             ) : (
-                <div className="h-full flex flex-col items-center justify-center text-slate-500 dark:text-slate-600 font-mono">
+                <div className="h-96 flex flex-col items-center justify-center text-slate-500 dark:text-slate-600 font-mono">
                      <div className="mb-4 p-4 border border-slate-200 dark:border-slate-800 rounded-full bg-slate-100 dark:bg-slate-900/50">
                         <svg className="w-8 h-8 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                      </div>
@@ -208,14 +182,11 @@ const App: React.FC = () => {
                      <p className="text-xs text-slate-400 dark:text-slate-500">{ui.noDataDesc}</p>
                 </div>
             )}
-           
-        </div>
-
-        {/* Detail Panel (Bottom Half) */}
-        <div className={`transition-all duration-700 ease-[cubic-bezier(0.25,0.8,0.25,1)] border-t border-slate-200 dark:border-slate-800 relative z-10 ${selectedModel ? 'h-[55%]' : 'h-0'}`}>
-             <DetailPanel model={selectedModel} onClose={() => setSelectedModel(null)} lang={lang} ui={ui} />
         </div>
       </main>
+
+      {/* Detail Overlay */}
+      <DetailPanel model={selectedModel} onClose={() => setSelectedModel(null)} lang={lang} ui={ui} />
     </div>
   );
 };

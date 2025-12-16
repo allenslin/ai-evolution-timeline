@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
+
+import React, { useRef, useEffect } from 'react';
 import { AIModel, UIText } from '../types';
 import { COMPANY_COLORS } from '../constants';
 
@@ -11,226 +12,113 @@ interface TimelineProps {
 
 export const Timeline: React.FC<TimelineProps> = ({ models, selectedModelId, onSelectModel, ui }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  
-  // Canvas State
-  const [viewState, setViewState] = useState({ x: 0, scale: 1 });
-  const [isDragging, setIsDragging] = useState(false);
-  
-  // Refs for drag calculations to avoid closure staleness
-  const dragStartRef = useRef<{ x: number; viewX: number } | null>(null);
 
-  // Constants
-  const MIN_ZOOM = 0.1;
-  const MAX_ZOOM = 4;
-  const ZOOM_SPEED = 0.001;
-
-  // Initial center alignment
+  // Auto-scroll to selected model if needed, or initial animation
   useEffect(() => {
-    // Start with a slight offset to center the beginning of the timeline visually if needed
-    // or just start at 0. Since we have huge padding, 0 is fine (centered due to flex alignment).
-    setViewState({ x: 0, scale: 0.8 }); // Start slightly zoomed out
+    // Optional: Add intersection observer for fade-in effects here
   }, []);
 
-  // --- Interaction Handlers ---
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setIsDragging(true);
-    dragStartRef.current = {
-      x: e.clientX,
-      viewX: viewState.x
-    };
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !dragStartRef.current) return;
-    e.preventDefault();
-    
-    const dx = e.clientX - dragStartRef.current.x;
-    setViewState(prev => ({
-      ...prev,
-      x: dragStartRef.current!.viewX + dx
-    }));
-  };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-    dragStartRef.current = null;
-  };
-
-  const handleMouseLeave = () => {
-    setIsDragging(false);
-    dragStartRef.current = null;
-  };
-
-  const handleWheel = (e: React.WheelEvent) => {
-    // Check for Zoom (Ctrl + Wheel or Pinch on trackpad)
-    if (e.ctrlKey || e.metaKey) {
-        e.preventDefault();
-        const zoomDelta = -e.deltaY * ZOOM_SPEED;
-        const newScale = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, viewState.scale + zoomDelta));
-        
-        // Simple center zoom for robustness
-        setViewState(prev => ({
-            ...prev,
-            scale: newScale
-        }));
-    } else {
-        // Pan (Standard Wheel)
-        // Adjust pan speed based on scale to keep it feeling natural
-        const panDelta = -e.deltaY; // Horizontal pan typically maps deltaY to X on non-touch mice
-        // If shift is held, browsers naturally swap X/Y, but we enforce X panning for this timeline
-        const finalDelta = e.shiftKey ? -e.deltaX : panDelta;
-        
-        setViewState(prev => ({
-            ...prev,
-            x: prev.x + finalDelta
-        }));
-    }
-  };
-
-  // --- Zoom Controls ---
-
-  const handleZoomIn = () => {
-    setViewState(prev => ({ ...prev, scale: Math.min(MAX_ZOOM, prev.scale * 1.2) }));
-  };
-
-  const handleZoomOut = () => {
-    setViewState(prev => ({ ...prev, scale: Math.max(MIN_ZOOM, prev.scale / 1.2) }));
-  };
-
-  const handleReset = () => {
-    setViewState({ x: 0, scale: 0.8 });
-  };
-
   return (
-    <div className="w-full h-full relative bg-paper-50 dark:bg-cyber-900 tech-grid overflow-hidden transition-colors duration-500 group/canvas">
-        {/* Background Decorative Line (Static) */}
-        <div className="absolute top-1/2 left-0 w-full h-px bg-slate-200 dark:bg-slate-800 pointer-events-none z-0"></div>
+    <div className="w-full relative min-h-full py-12 md:py-24 px-4 md:px-8 max-w-5xl mx-auto">
+        
+        {/* Central Spine Line */}
+        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-slate-300 dark:via-slate-700 to-transparent z-0 transform md:-translate-x-1/2"></div>
 
-        {/* Viewport / Interactive Area */}
-        <div 
-            ref={containerRef}
-            className={`w-full h-full relative cursor-grab active:cursor-grabbing z-10 touch-none`}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseLeave}
-            onWheel={handleWheel}
-        >
-            {/* Movable Canvas Layer */}
-            <div 
-                className="absolute top-0 left-0 h-full flex items-center transition-transform duration-75 ease-out will-change-transform"
-                style={{ 
-                    transform: `translate3d(${viewState.x}px, 0, 0) scale(${viewState.scale})`,
-                    transformOrigin: '50% 50%', // Zoom from center of the strip
-                    width: '100%', // Ensure flex centering works relative to viewport
-                    justifyContent: 'center' // Start centered
-                }}
-            >
-                {/* Content Strip */}
-                <div className="flex items-center space-x-40 px-20">
-                    {models.map((model, index) => {
-                        const isSelected = selectedModelId === model.id;
-                        const color = COMPANY_COLORS[model.company] || '#64748b';
-                        const year = model.releaseDate.split('-')[0];
-                        const prevYear = index > 0 ? models[index - 1].releaseDate.split('-')[0] : null;
-                        const showYear = year !== prevYear;
+        <div className="space-y-12 md:space-y-24 relative z-10">
+            {models.map((model, index) => {
+                const isSelected = selectedModelId === model.id;
+                const isLatest = index === 0;
+                const color = COMPANY_COLORS[model.company] || '#64748b';
+                const isLeft = index % 2 === 0; // Alternating layout for desktop
 
-                        return (
+                return (
+                    <div 
+                        key={model.id} 
+                        className={`relative flex flex-col md:flex-row items-start md:items-center w-full group ${isLeft ? 'md:flex-row-reverse' : ''}`}
+                    >
+                        {/* Mobile Node (Left Aligned) */}
+                        <div className="absolute left-8 md:left-1/2 w-4 h-4 -translate-x-1/2 md:translate-x-[-50%] z-20 flex items-center justify-center">
+                            {/* Ping effect for latest node */}
+                             {isLatest && (
+                                <div className="absolute w-full h-full rounded-full bg-cyan-500 opacity-75 animate-ping"></div>
+                             )}
+                             <div 
+                                className={`w-3 h-3 rounded-full transition-all duration-300 border-2 relative z-10 ${isSelected || isLatest ? 'bg-cyan-500 border-white dark:border-cyber-900 scale-150 shadow-[0_0_15px_rgba(6,182,212,0.8)]' : 'bg-white dark:bg-cyber-900 border-slate-400 dark:border-slate-600 group-hover:border-cyan-500 group-hover:scale-125'}`}
+                             ></div>
+                        </div>
+
+                        {/* Spacer for center alignment on desktop */}
+                        <div className="hidden md:block w-1/2"></div>
+
+                        {/* Content Card */}
+                        <div className={`w-full md:w-1/2 pl-16 md:pl-0 ${isLeft ? 'md:pr-12' : 'md:pl-12'}`}>
                             <div 
-                                key={model.id} 
-                                className={`relative flex-shrink-0 flex flex-col items-center group/node ${showYear && index !== 0 ? 'ml-96' : ''}`}
+                                onClick={() => onSelectModel(model)}
+                                className={`
+                                    relative p-5 rounded-xl border transition-all duration-300 cursor-pointer overflow-visible
+                                    ${isSelected 
+                                        ? 'bg-white dark:bg-slate-800 border-cyan-500 ring-1 ring-cyan-500/50 shadow-lg shadow-cyan-500/10 scale-[1.02]' 
+                                        : isLatest
+                                            ? 'bg-white/90 dark:bg-slate-800/90 border-cyan-500/60 shadow-lg shadow-cyan-500/10 scale-[1.01]'
+                                            : 'bg-white/80 dark:bg-slate-900/80 border-slate-200 dark:border-slate-800 hover:border-cyan-500/50 hover:shadow-md hover:-translate-y-1'
+                                    }
+                                `}
                             >
-                                {/* Year Marker */}
-                                {showYear && (
-                                    <>
-                                        {index !== 0 && (
-                                            <div className="absolute -left-48 top-1/2 -translate-y-1/2 h-48 w-px border-l-2 border-dashed border-slate-300 dark:border-slate-800 opacity-50 pointer-events-none"></div>
-                                        )}
-                                        <div className="absolute -top-48 text-8xl font-black text-slate-200 dark:text-slate-800/50 font-sans select-none pointer-events-none transition-colors tracking-tighter z-0">
-                                            {year}
-                                        </div>
-                                    </>
+                                {/* Decorative color accent */}
+                                <div className="absolute top-0 left-0 w-1 h-full opacity-80 rounded-l-xl" style={{ backgroundColor: color }}></div>
+
+                                {/* Latest Badge */}
+                                {isLatest && (
+                                    <div className="absolute -top-3 -right-2 md:-right-3 px-3 py-1 bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-[10px] font-bold rounded-full shadow-lg z-20 tracking-widest flex items-center gap-1 animate-pulse-fast border border-white/20">
+                                        <span className="relative flex h-2 w-2">
+                                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                                          <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                                        </span>
+                                        LATEST
+                                    </div>
                                 )}
 
-                                {/* Connection Line */}
-                                <div className={`w-px h-16 mb-2 transition-all duration-300 relative z-10 ${isSelected ? 'bg-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.8)]' : 'bg-slate-300 dark:bg-slate-700 group-hover/node:bg-slate-400 dark:group-hover/node:bg-slate-500'}`}></div>
-                                
-                                {/* Node Point */}
-                                <button
-                                    onMouseDown={(e) => e.stopPropagation()} // Prevent drag start when clicking node
-                                    onClick={() => onSelectModel(model)}
-                                    className={`
-                                        w-6 h-6 rounded-full border-2 transition-all duration-300 relative z-20 cursor-pointer
-                                        ${isSelected ? 'scale-[2.5] bg-white dark:bg-cyber-900 border-cyan-500 shadow-[0_0_20px_rgba(6,182,212,0.6)]' : 'bg-white dark:bg-cyber-900 border-slate-300 dark:border-slate-600 hover:border-cyan-500 hover:scale-150'}
-                                    `}
-                                >
-                                    {isSelected && (
-                                        <span className="absolute inset-0 rounded-full animate-ping bg-cyan-400 opacity-20"></span>
-                                    )}
-                                </button>
-
-                                {/* Label */}
-                                <div 
-                                    className={`
-                                        absolute top-28 w-64 text-center transition-all duration-300 z-30 pointer-events-none
-                                        ${isSelected ? 'opacity-100 scale-110 translate-y-0' : 'opacity-70 translate-y-2 group-hover/node:opacity-100 group-hover/node:translate-y-0'}
-                                    `}
-                                >
-                                    <div 
-                                        className="text-xs font-mono mb-1 uppercase tracking-wider" 
-                                        style={{ color: color }}
-                                    >
-                                        {model.company}
+                                <div className="flex justify-between items-start mb-2">
+                                    <div className="flex flex-col">
+                                        <span className="text-[10px] font-mono font-bold tracking-wider uppercase mb-1" style={{ color: color }}>
+                                            {model.company}
+                                        </span>
+                                        <h3 className={`text-lg md:text-xl font-bold leading-tight ${isSelected || isLatest ? 'text-slate-900 dark:text-white' : 'text-slate-800 dark:text-slate-200'}`}>
+                                            {model.name}
+                                        </h3>
                                     </div>
-                                    <div className={`font-bold leading-tight mb-1 ${isSelected ? 'text-slate-900 dark:text-white text-xl' : 'text-slate-600 dark:text-slate-300 text-sm'}`}>
-                                        {model.name}
-                                    </div>
-                                    <div className="text-[10px] text-slate-400 dark:text-slate-500 font-mono">
-                                        {model.releaseDate}
+                                    <div className="text-right">
+                                         <span className={`inline-block px-2 py-1 text-[10px] font-mono rounded border ${isLatest ? 'bg-cyan-50 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 border-cyan-200 dark:border-cyan-700/50' : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-700'}`}>
+                                            {model.releaseDate.split('-')[0]}
+                                         </span>
                                     </div>
                                 </div>
+
+                                <p className={`text-sm line-clamp-2 mb-3 leading-relaxed ${isLatest ? 'text-slate-700 dark:text-slate-300' : 'text-slate-600 dark:text-slate-400'}`}>
+                                    {model.description}
+                                </p>
+
+                                <div className="flex flex-wrap gap-2 mt-2">
+                                    {model.capabilities.slice(0, 3).map(cap => (
+                                        <span key={cap} className="px-1.5 py-0.5 text-[9px] uppercase font-semibold rounded bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 border border-slate-100 dark:border-slate-700/50">
+                                            {cap}
+                                        </span>
+                                    ))}
+                                    {model.source && (
+                                        <div className={`ml-auto opacity-0 group-hover:opacity-100 transition-opacity ${isLatest ? 'text-cyan-600 dark:text-cyan-400' : 'text-cyan-600 dark:text-cyan-500'}`}>
+                                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
-                        );
-                    })}
-                </div>
-            </div>
+                        </div>
+                    </div>
+                );
+            })}
         </div>
-
-        {/* Start/End Gradients */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-paper-50 dark:from-cyber-900 to-transparent pointer-events-none z-20 transition-colors duration-500"></div>
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-paper-50 dark:from-cyber-900 to-transparent pointer-events-none z-20 transition-colors duration-500"></div>
-
-        {/* Floating Controls */}
-        <div className="absolute bottom-8 right-8 flex flex-col gap-2 z-50">
-             <button 
-                onClick={handleZoomIn}
-                className="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full shadow-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-cyan-500 transition-all"
-                title="Zoom In"
-             >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
-             </button>
-             <button 
-                onClick={handleReset}
-                className="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full shadow-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-cyan-500 transition-all"
-                title="Reset View"
-             >
-                <span className="text-xs font-bold">{Math.round(viewState.scale * 100)}%</span>
-             </button>
-             <button 
-                onClick={handleZoomOut}
-                className="w-10 h-10 flex items-center justify-center bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full shadow-lg text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-cyan-500 transition-all"
-                title="Zoom Out"
-             >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" /></svg>
-             </button>
-        </div>
-
-        {/* Instructions */}
-        <div className="absolute bottom-8 left-8 z-20 text-[10px] text-slate-400 dark:text-slate-600 font-mono bg-white/50 dark:bg-cyber-900/50 px-3 py-1.5 rounded border border-slate-200 dark:border-slate-800 backdrop-blur transition-colors pointer-events-none select-none">
-            DRAG TO PAN • CTRL+SCROLL TO ZOOM
-        </div>
+        
+        {/* End Spacer */}
+        <div className="h-24"></div>
     </div>
   );
 };

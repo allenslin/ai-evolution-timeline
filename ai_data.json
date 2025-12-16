@@ -1,4 +1,3 @@
-
 [
   {
     "id": "transformer",
@@ -6,7 +5,6 @@
     "releaseDate": "2017-06-12",
     "params": "-",
     "highlight": true,
-    "importance": 5,
     "capabilities": ["NLP"],
     "source": "https://arxiv.org/abs/1706.03762",
     "en": {
@@ -18,10 +16,79 @@
     },
     "zh": {
       "name": "Attention Is All You Need (论文)",
-      "description": "提出了Transformer架构的开创性论文，为现代大语言模型奠定了基础。",
+      "description": "提出了 Transformer 架构的开创性论文，彻底改变了 NLP 领域，为现代大模型奠基。",
       "coreTech": "自注意力机制 (Self-Attention)",
-      "features": ["并行处理能力", "长距离依赖处理", "可扩展架构"],
+      "features": ["并行处理能力", "长距离依赖处理", "高可扩展架构"],
       "useCases": ["机器翻译", "文本摘要", "序列建模"]
+    }
+  },
+  {
+    "id": "alphago_zero",
+    "company": "DeepMind",
+    "releaseDate": "2017-10-18",
+    "params": "-",
+    "highlight": true,
+    "capabilities": ["Reinforcement Learning"],
+    "source": "https://deepmind.google/discover/blog/alphago-zero-starting-from-scratch/",
+    "en": {
+      "name": "AlphaGo Zero",
+      "description": "Mastered the game of Go without human data, using only self-play.",
+      "coreTech": "Deep Reinforcement Learning",
+      "features": ["Self-play training", "No human domain knowledge", "Superhuman performance"],
+      "useCases": ["Game Playing", "Complex Strategy Optimization"]
+    },
+    "zh": {
+      "name": "AlphaGo Zero",
+      "description": "完全不依赖人类棋谱数据，仅通过自我对弈掌握了围棋。",
+      "coreTech": "深度强化学习",
+      "features": ["自我对弈训练", "无需人类领域知识", "超人类水平"],
+      "useCases": ["博弈游戏", "复杂策略优化"]
+    }
+  },
+  {
+    "id": "elmo",
+    "company": "Allen Institute for AI",
+    "releaseDate": "2018-02-15",
+    "params": "93M",
+    "highlight": false,
+    "capabilities": ["NLP"],
+    "source": "https://arxiv.org/abs/1802.05365",
+    "en": {
+      "name": "ELMo",
+      "description": "Deep contextualized word representations, a key predecessor to BERT.",
+      "coreTech": "Bi-LSTM",
+      "features": ["Context-aware embeddings", "Character-based CNN"],
+      "useCases": ["Question Answering", "Sentiment Analysis"]
+    },
+    "zh": {
+      "name": "ELMo",
+      "description": "深度上下文词表示，是 BERT 之前连接静态词向量与动态语境的关键技术。",
+      "coreTech": "双向 LSTM",
+      "features": ["上下文感知词向量", "基于字符的 CNN"],
+      "useCases": ["问答系统", "情感分析"]
+    }
+  },
+  {
+    "id": "gpt_1",
+    "company": "OpenAI",
+    "releaseDate": "2018-06-11",
+    "params": "117M",
+    "highlight": false,
+    "capabilities": ["NLP"],
+    "source": "https://openai.com/research/language-unsupervised",
+    "en": {
+      "name": "GPT-1",
+      "description": "Improving Language Understanding by Generative Pre-Training.",
+      "coreTech": "Transformer Decoder",
+      "features": ["Unsupervised pre-training", "Supervised fine-tuning"],
+      "useCases": ["Text Classification", "Sentiment Analysis"]
+    },
+    "zh": {
+      "name": "GPT-1",
+      "description": "通过生成式预训练提高语言理解能力，GPT 系列的开端。",
+      "coreTech": "Transformer 解码器",
+      "features": ["无监督预训练", "有监督微调"],
+      "useCases": ["文本分类", "情感分析"]
     }
   },
   {
@@ -29,71 +96,390 @@
     "company": "Google",
     "releaseDate": "2018-10-11",
     "params": "340M",
-    "highlight": false,
-    "importance": 4,
+    "highlight": true,
     "capabilities": ["NLP"],
-    "source": "https://arxiv.org/abs/1810.04805",
+    "source": "https://blog.research.google/2018/11/open-sourcing-bert-state-of-art-pre.html",
     "en": {
       "name": "BERT",
-      "description": "Bidirectional Encoder Representations from Transformers. Revolutionized NLP tasks.",
-      "coreTech": "Masked Language Modeling (MLM)",
-      "features": ["Bidirectional context", "Fine-tuning capability", "Deep context understanding"],
-      "useCases": ["Search Engine Ranking", "Sentiment Analysis", "Question Answering"]
+      "description": "Bidirectional Encoder Representations from Transformers.",
+      "coreTech": "Masked LM & Next Sentence Prediction",
+      "features": ["Bidirectional context", "Deep conceptual understanding"],
+      "useCases": ["Search", "Q&A", "Inference"]
     },
     "zh": {
       "name": "BERT",
-      "description": "基于Transformer的双向编码器表示，彻底改变了自然语言处理任务。",
-      "coreTech": "掩码语言模型 (MLM)",
-      "features": ["双向上下文理解", "微调能力", "深度语义理解"],
-      "useCases": ["搜索引擎排名", "情感分析", "问答系统"]
+      "description": "基于 Transformer 的双向编码器表示，统治了 NLP 榜单多年。",
+      "coreTech": "掩码语言模型 (MLM) & 下一句预测",
+      "features": ["双向上下文理解", "深度语义理解"],
+      "useCases": ["搜索引擎", "问答系统", "自然语言推理"]
     }
   },
   {
-    "id": "gpt-2",
+    "id": "stylegan",
+    "company": "NVIDIA",
+    "releaseDate": "2018-12-12",
+    "params": "-",
+    "highlight": false,
+    "capabilities": ["Image Generation"],
+    "source": "https://arxiv.org/abs/1812.04948",
+    "en": {
+      "name": "StyleGAN",
+      "description": "Revolutionized generative adversarial networks for photorealistic face generation.",
+      "coreTech": "GAN (Generative Adversarial Network)",
+      "features": ["Style mixing", "Stochastic variation"],
+      "useCases": ["Face generation", "Game character design"]
+    },
+    "zh": {
+      "name": "StyleGAN",
+      "description": "彻底革新了生成对抗网络，实现了照片级的人脸生成。",
+      "coreTech": "GAN (生成对抗网络)",
+      "features": ["风格混合", "随机变化控制"],
+      "useCases": ["人脸生成", "游戏角色设计"]
+    }
+  },
+  {
+    "id": "gpt_2",
     "company": "OpenAI",
     "releaseDate": "2019-02-14",
     "params": "1.5B",
-    "highlight": false,
-    "importance": 3,
+    "highlight": true,
     "capabilities": ["NLP"],
     "source": "https://openai.com/research/better-language-models",
     "en": {
       "name": "GPT-2",
-      "description": "Demonstrated that scaling up language models improves performance significantly.",
-      "coreTech": "Transformer Decoder",
-      "features": ["Zero-shot task transfer", "Coherent text generation", "Large-scale training"],
-      "useCases": ["Text Completion", "Creative Writing", "Content Generation"]
+      "description": "A model so good OpenAI initially refused to release it due to safety concerns.",
+      "coreTech": "Scaled Up Transformer Decoder",
+      "features": ["Zero-shot task transfer", "Coherent text generation"],
+      "useCases": ["Creative Writing", "Chatbots"]
     },
     "zh": {
       "name": "GPT-2",
-      "description": "证明了扩大语言模型的规模可以显著提高性能。",
-      "coreTech": "Transformer 解码器",
-      "features": ["零样本任务迁移", "连贯文本生成", "大规模训练"],
-      "useCases": ["文本补全", "创意写作", "内容生成"]
+      "description": "展示了惊人的文本生成能力，OpenAI 最初因安全担忧拒绝开源完整版。",
+      "coreTech": "大规模 Transformer 解码器",
+      "features": ["零样本任务迁移", "连贯文本生成"],
+      "useCases": ["创意写作", "聊天机器人"]
     }
   },
   {
-    "id": "gpt-3",
+    "id": "t5",
+    "company": "Google",
+    "releaseDate": "2019-10-23",
+    "params": "11B",
+    "highlight": false,
+    "capabilities": ["NLP"],
+    "source": "https://blog.research.google/2020/02/exploring-transfer-learning-with-t5.html",
+    "en": {
+      "name": "T5 (Text-to-Text Transfer Transformer)",
+      "description": "Unified all NLP tasks into a text-to-text format.",
+      "coreTech": "Encoder-Decoder Transformer",
+      "features": ["Unified framework", "Multi-task learning"],
+      "useCases": ["Translation", "Summarization", "Classification"]
+    },
+    "zh": {
+      "name": "T5",
+      "description": "将所有 NLP 任务统一为“文本到文本”的格式。",
+      "coreTech": "编码器-解码器 Transformer",
+      "features": ["统一框架", "多任务学习"],
+      "useCases": ["翻译", "摘要", "分类"]
+    }
+  },
+  {
+    "id": "gpt_3",
     "company": "OpenAI",
-    "releaseDate": "2020-06-11",
+    "releaseDate": "2020-05-28",
     "params": "175B",
     "highlight": true,
-    "importance": 5,
-    "capabilities": ["NLP", "Code"],
+    "capabilities": ["NLP"],
     "source": "https://arxiv.org/abs/2005.14165",
     "en": {
       "name": "GPT-3",
-      "description": "A massive 175B parameter model that showed few-shot learning capabilities.",
-      "coreTech": "Sparse Transformer",
-      "features": ["Few-shot learning", "Meta-learning", "Massive scale"],
-      "useCases": ["Chatbots", "Code Generation", "Translation", "Gaming"]
+      "description": "A massive leap in parameter size, demonstrating few-shot learning capabilities.",
+      "coreTech": "Sparse Attention (in parts), Massive Scale",
+      "features": ["Few-shot learning", "Code generation", "High coherence"],
+      "useCases": ["Copywriting", "Coding assistants", "General purpose NLP"]
     },
     "zh": {
       "name": "GPT-3",
-      "description": "拥有1750亿参数的庞大模型，展示了惊人的少样本学习能力。",
-      "coreTech": "稀疏 Transformer",
-      "features": ["少样本学习", "元学习", "超大规模"],
-      "useCases": ["聊天机器人", "代码生成", "翻译", "游戏对话"]
+      "description": "参数量的巨大飞跃，展示了惊人的小样本学习（Few-shot）能力。",
+      "coreTech": "稀疏注意力 (部分), 超大规模参数",
+      "features": ["小样本学习", "代码生成", "高连贯性"],
+      "useCases": ["文案写作", "代码助手", "通用 NLP"]
+    }
+  },
+  {
+    "id": "alphafold_2",
+    "company": "DeepMind",
+    "releaseDate": "2020-11-30",
+    "params": "-",
+    "highlight": true,
+    "capabilities": ["Biology"],
+    "source": "https://deepmind.google/discover/blog/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology/",
+    "en": {
+      "name": "AlphaFold 2",
+      "description": "Solved the 50-year-old protein folding problem.",
+      "coreTech": "Evoformer & Attention",
+      "features": ["Atomic accuracy", "3D structure prediction"],
+      "useCases": ["Drug Discovery", "Biology Research"]
+    },
+    "zh": {
+      "name": "AlphaFold 2",
+      "description": "解决了困扰生物学界 50 年的蛋白质折叠问题。",
+      "coreTech": "Evoformer & 注意力机制",
+      "features": ["原子级精度", "3D 结构预测"],
+      "useCases": ["药物发现", "基础生物研究"]
+    }
+  },
+  {
+    "id": "dall_e",
+    "company": "OpenAI",
+    "releaseDate": "2021-01-05",
+    "params": "12B",
+    "highlight": true,
+    "capabilities": ["Image Generation"],
+    "source": "https://openai.com/research/dall-e",
+    "en": {
+      "name": "DALL·E",
+      "description": "Generating images from text descriptions using a transformer.",
+      "coreTech": "Zero-shot Text-to-Image Generation",
+      "features": ["Creativity", "Object manipulation"],
+      "useCases": ["Art generation", "Design visualization"]
+    },
+    "zh": {
+      "name": "DALL·E",
+      "description": "使用 Transformer 根据文本描述生成图像，开启文生图时代。",
+      "coreTech": "零样本以文生图",
+      "features": ["创造力", "对象操作"],
+      "useCases": ["艺术生成", "设计可视化"]
+    }
+  },
+  {
+    "id": "clip",
+    "company": "OpenAI",
+    "releaseDate": "2021-01-05",
+    "params": "-",
+    "highlight": true,
+    "capabilities": ["Multimodal"],
+    "source": "https://openai.com/research/clip",
+    "en": {
+      "name": "CLIP",
+      "description": "Connecting text and images for general visual understanding.",
+      "coreTech": "Contrastive Learning",
+      "features": ["Zero-shot image classification", "Text-Image alignment"],
+      "useCases": ["Image Search", "Ranking", "Steering generation"]
+    },
+    "zh": {
+      "name": "CLIP",
+      "description": "连接文本和图像，实现通用的视觉理解，是后续文生图模型的核心组件。",
+      "coreTech": "对比学习",
+      "features": ["零样本图像分类", "图文对齐"],
+      "useCases": ["图像搜索", "排序", "引导生成"]
+    }
+  },
+  {
+    "id": "github_copilot",
+    "company": "GitHub/OpenAI",
+    "releaseDate": "2021-06-29",
+    "params": "-",
+    "highlight": true,
+    "capabilities": ["Code"],
+    "source": "https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/",
+    "en": {
+      "name": "GitHub Copilot (Preview)",
+      "description": "AI pair programmer powered by OpenAI Codex.",
+      "coreTech": "Codex (GPT-3 fine-tuned on code)",
+      "features": ["Code completion", "Function generation"],
+      "useCases": ["Software Development", "Debugging"]
+    },
+    "zh": {
+      "name": "GitHub Copilot (预览版)",
+      "description": "基于 OpenAI Codex 的 AI 结对编程工具。",
+      "coreTech": "Codex (基于代码微调的 GPT-3)",
+      "features": ["代码补全", "函数生成"],
+      "useCases": ["软件开发", "调试"]
+    }
+  },
+  {
+    "id": "gopher",
+    "company": "DeepMind",
+    "releaseDate": "2021-12-08",
+    "params": "280B",
+    "highlight": false,
+    "capabilities": ["NLP"],
+    "source": "https://deepmind.google/discover/blog/language-modelling-at-scale-gopher-ethical-considerations-and-retrieval/",
+    "en": {
+      "name": "Gopher",
+      "description": "DeepMind's massive LLM exploring scale.",
+      "coreTech": "Transformer",
+      "features": ["Reading comprehension", "Fact checking"],
+      "useCases": ["Research", "Language tasks"]
+    },
+    "zh": {
+      "name": "Gopher",
+      "description": "DeepMind 的超大参数语言模型，探索规模效应。",
+      "coreTech": "Transformer",
+      "features": ["阅读理解", "事实核查"],
+      "useCases": ["研究", "语言任务"]
+    }
+  },
+  {
+    "id": "instruct_gpt",
+    "company": "OpenAI",
+    "releaseDate": "2022-01-27",
+    "params": "175B",
+    "highlight": true,
+    "capabilities": ["NLP"],
+    "source": "https://openai.com/research/instruction-following",
+    "en": {
+      "name": "InstructGPT",
+      "description": "Aligned language models to follow instructions better using RLHF.",
+      "coreTech": "RLHF (Reinforcement Learning from Human Feedback)",
+      "features": ["Better instruction following", "Reduced toxicity"],
+      "useCases": ["Assistant tasks", "Q&A"]
+    },
+    "zh": {
+      "name": "InstructGPT",
+      "description": "使用 RLHF 技术将语言模型与人类意图对齐，是 ChatGPT 的前身。",
+      "coreTech": "RLHF (基于人类反馈的强化学习)",
+      "features": ["更好的指令遵循", "降低有害性"],
+      "useCases": ["助手任务", "问答"]
+    }
+  },
+  {
+    "id": "chinchilla",
+    "company": "DeepMind",
+    "releaseDate": "2022-03-29",
+    "params": "70B",
+    "highlight": true,
+    "capabilities": ["NLP"],
+    "source": "https://arxiv.org/abs/2203.15556",
+    "en": {
+      "name": "Chinchilla",
+      "description": "Proved that training data size matters more than parameter size (Scaling Laws).",
+      "coreTech": "Compute-Optimal Scaling",
+      "features": ["Efficiency", "Better performance with fewer params"],
+      "useCases": ["Model Optimization"]
+    },
+    "zh": {
+      "name": "Chinchilla",
+      "description": "证明了训练数据量比参数量更重要（Chinchilla 缩放定律）。",
+      "coreTech": "计算最优缩放",
+      "features": ["高效率", "更少参数更强性能"],
+      "useCases": ["模型优化"]
+    }
+  },
+  {
+    "id": "palm",
+    "company": "Google",
+    "releaseDate": "2022-04-04",
+    "params": "540B",
+    "highlight": true,
+    "capabilities": ["NLP"],
+    "source": "https://blog.research.google/2022/04/pathways-language-model-palm-scaling-to.html",
+    "en": {
+      "name": "PaLM",
+      "description": "Pathways Language Model, achieved breakthrough performance with massive scale.",
+      "coreTech": "Pathways System",
+      "features": ["Chain of Thought reasoning", "Multilingual"],
+      "useCases": ["Reasoning", "Code", "Translation"]
+    },
+    "zh": {
+      "name": "PaLM",
+      "description": "Pathways 语言模型，通过超大规模参数实现了思维链推理能力的突破。",
+      "coreTech": "Pathways 系统",
+      "features": ["思维链推理 (CoT)", "多语言能力"],
+      "useCases": ["推理", "代码", "翻译"]
+    }
+  },
+  {
+    "id": "dall_e_2",
+    "company": "OpenAI",
+    "releaseDate": "2022-04-06",
+    "params": "3.5B",
+    "highlight": true,
+    "capabilities": ["Image Generation"],
+    "source": "https://openai.com/research/dall-e-2",
+    "en": {
+      "name": "DALL·E 2",
+      "description": "Higher resolution and more realistic image generation using diffusion.",
+      "coreTech": "Diffusion Model + CLIP",
+      "features": ["In-painting", "Variations", "Photorealism"],
+      "useCases": ["Design", "Content Creation"]
+    },
+    "zh": {
+      "name": "DALL·E 2",
+      "description": "使用扩散模型生成更高分辨率、更逼真的图像。",
+      "coreTech": "扩散模型 (Diffusion) + CLIP",
+      "features": ["图像修补 (In-painting)", "变体生成", "照片级真实感"],
+      "useCases": ["设计", "内容创作"]
+    }
+  },
+  {
+    "id": "midjourney_v1",
+    "company": "Midjourney",
+    "releaseDate": "2022-07-12",
+    "params": "-",
+    "highlight": true,
+    "capabilities": ["Image Generation"],
+    "source": "https://docs.midjourney.com/docs/model-versions",
+    "en": {
+      "name": "Midjourney v3 (Open Beta)",
+      "description": "Artistic image generation tool accessible via Discord.",
+      "coreTech": "Diffusion Model",
+      "features": ["Artistic style", "Discord interface"],
+      "useCases": ["Art", "Concept Design"]
+    },
+    "zh": {
+      "name": "Midjourney (公测)",
+      "description": "基于 Discord 的艺术图像生成工具，以其独特的艺术风格著称。",
+      "coreTech": "扩散模型",
+      "features": ["艺术风格", "Discord 交互"],
+      "useCases": ["艺术", "概念设计"]
+    }
+  },
+  {
+    "id": "stable_diffusion",
+    "company": "Stability AI",
+    "releaseDate": "2022-08-22",
+    "params": "890M",
+    "highlight": true,
+    "capabilities": ["Image Generation"],
+    "source": "https://stability.ai/blog/stable-diffusion-public-release",
+    "en": {
+      "name": "Stable Diffusion",
+      "description": "Open-source text-to-image model that democratized AI art.",
+      "coreTech": "Latent Diffusion",
+      "features": ["Run on consumer GPU", "Open weights"],
+      "useCases": ["Local generation", "Custom fine-tuning (LoRA)"]
+    },
+    "zh": {
+      "name": "Stable Diffusion",
+      "description": "开源的文生图模型，让 AI 绘画能在消费级显卡上运行，彻底普及了 AI 艺术。",
+      "coreTech": "潜在扩散 (Latent Diffusion)",
+      "features": ["消费级 GPU 运行", "权重开源"],
+      "useCases": ["本地生成", "自定义微调 (LoRA)"]
+    }
+  },
+  {
+    "id": "whisper",
+    "company": "OpenAI",
+    "releaseDate": "2022-09-21",
+    "params": "1.55B (Large)",
+    "highlight": true,
+    "capabilities": ["Audio"],
+    "source": "https://openai.com/research/whisper",
+    "en": {
+      "name": "Whisper",
+      "description": "Robust speech recognition model that became the industry standard for ASR.",
+      "coreTech": "Transformer (Encoder-Decoder)",
+      "features": ["Multilingual speech recognition", "Translation"],
+      "useCases": ["Subtitling", "Transcription"]
+    },
+    "zh": {
+      "name": "Whisper",
+      "description": "鲁棒性极强的语音识别模型，迅速成为 ASR 领域的行业标准。",
+      "coreTech": "Transformer (编码器-解码器)",
+      "features": ["多语言语音识别", "语音翻译"],
+      "useCases": ["字幕生成", "会议转录"]
     }
   },
   {
@@ -102,118 +488,481 @@
     "releaseDate": "2022-11-30",
     "params": "Unknown",
     "highlight": true,
-    "importance": 5,
-    "capabilities": ["NLP", "Code"],
+    "capabilities": ["Chat", "NLP"],
     "source": "https://openai.com/blog/chatgpt",
     "en": {
-      "name": "ChatGPT (3.5)",
-      "description": "The chatbot that brought LLMs to the general public via RLHF.",
-      "coreTech": "RLHF (Reinforcement Learning from Human Feedback)",
-      "features": ["Conversational context", "Safety alignment", "Instruction following"],
-      "useCases": ["Personal Assistant", "Drafting Emails", "Education"]
+      "name": "ChatGPT",
+      "description": "The chatbot that took the world by storm, based on GPT-3.5.",
+      "coreTech": "GPT-3.5 + RLHF",
+      "features": ["Conversational context", "Accessibility"],
+      "useCases": ["General assistance", "Writing", "Coding"]
     },
     "zh": {
-      "name": "ChatGPT (3.5)",
-      "description": "通过RLHF技术将大语言模型带给大众的现象级聊天机器人。",
-      "coreTech": "RLHF (基于人类反馈的强化学习)",
-      "features": ["对话上下文保持", "安全对齐", "指令遵循"],
-      "useCases": ["个人助理", "邮件起草", "教育辅导"]
+      "name": "ChatGPT",
+      "description": "基于 GPT-3.5 的聊天机器人，引爆了全球 AI 热潮。",
+      "coreTech": "GPT-3.5 + RLHF",
+      "features": ["对话上下文", "极佳的易用性"],
+      "useCases": ["通用助手", "写作", "编程"]
     }
   },
   {
-    "id": "llama-1",
+    "id": "controlnet",
+    "company": "Stanford University",
+    "releaseDate": "2023-02-10",
+    "params": "-",
+    "highlight": true,
+    "capabilities": ["Image Generation"],
+    "source": "https://github.com/lllyasviel/ControlNet",
+    "en": {
+      "name": "ControlNet",
+      "description": "Added precise spatial control to Stable Diffusion generation.",
+      "coreTech": "Neural Network Adapter",
+      "features": ["Pose control", "Edge detection control", "Sketch to image"],
+      "useCases": ["Controlled artistic generation", "Architecture design"]
+    },
+    "zh": {
+      "name": "ControlNet",
+      "description": "为 Stable Diffusion 增加了精确的空间控制能力，是 AI 绘画可控化的里程碑。",
+      "coreTech": "神经网络适配器",
+      "features": ["姿态控制", "边缘检测控制", "草图生图"],
+      "useCases": ["可控艺术生成", "建筑设计"]
+    }
+  },
+  {
+    "id": "llama_1",
     "company": "Meta",
     "releaseDate": "2023-02-24",
     "params": "65B",
     "highlight": true,
-    "importance": 5,
     "capabilities": ["NLP"],
     "source": "https://ai.meta.com/blog/large-language-model-llama-meta-ai/",
     "en": {
       "name": "LLaMA",
-      "description": "Foundational open-weights model that sparked the open-source LLM community.",
-      "coreTech": "Efficient Transformer (SwiGLU)",
-      "features": ["Open research access", "High efficiency per parameter", "Training stability"],
-      "useCases": ["Research", "Model Fine-tuning", "On-premise deployment"]
+      "description": "Foundational model released to researchers, sparking the open-source LLM boom.",
+      "coreTech": "Efficient Transformer",
+      "features": ["Academic access", "High performance for size"],
+      "useCases": ["Research", "Base for Vicuna/Alpaca"]
     },
     "zh": {
       "name": "LLaMA",
-      "description": "点燃开源LLM社区热情的基石级开放权重模型。",
-      "coreTech": "高效 Transformer (SwiGLU)",
-      "features": ["开放研究访问", "高参数效率", "训练稳定性"],
-      "useCases": ["学术研究", "模型微调", "本地部署"]
+      "description": "面向研究人员发布的基础模型，无意中开启了开源大模型（如羊驼系列）的繁荣。",
+      "coreTech": "高效 Transformer",
+      "features": ["学术访问", "同尺寸下高性能"],
+      "useCases": ["研究", "Vicuna/Alpaca 的基座"]
     }
   },
   {
-    "id": "gpt-4",
+    "id": "gpt_4",
     "company": "OpenAI",
     "releaseDate": "2023-03-14",
-    "params": "Undisclosed",
+    "params": "Unknown (Est. 1.8T)",
     "highlight": true,
-    "importance": 5,
-    "capabilities": ["Multimodal", "NLP", "CV", "Code"],
+    "capabilities": ["NLP", "Multimodal"],
     "source": "https://openai.com/research/gpt-4",
     "en": {
       "name": "GPT-4",
-      "description": "Multimodal model with human-level performance on various professional benchmarks.",
-      "coreTech": "MoE (Mixture of Experts)",
-      "features": ["Visual input analysis", "Advanced reasoning", "Large context window"],
-      "useCases": ["Professional exams", "Complex coding", "Image analysis"]
+      "description": "A multimodal model exhibiting human-level performance on various professional benchmarks.",
+      "coreTech": "Mixture of Experts (MoE)",
+      "features": ["Multimodal input", "Advanced reasoning", "Large context window"],
+      "useCases": ["Complex problem solving", "Vision analysis"]
     },
     "zh": {
       "name": "GPT-4",
-      "description": "在多项专业基准测试中达到人类水平的多模态模型。",
-      "coreTech": "MoE (混合专家模型)",
-      "features": ["视觉输入分析", "高级推理能力", "长上下文窗口"],
-      "useCases": ["专业考试", "复杂编程", "图像分析"]
+      "description": "多模态模型，在各种专业基准测试中展现出人类水平的性能。",
+      "coreTech": "混合专家模型 (MoE)",
+      "features": ["多模态输入", "高级推理", "大上下文窗口"],
+      "useCases": ["复杂问题解决", "视觉分析"]
     }
   },
   {
-    "id": "claude-1",
+    "id": "claude_1",
     "company": "Anthropic",
     "releaseDate": "2023-03-14",
-    "params": "Unknown",
-    "highlight": false,
-    "importance": 3,
+    "params": "-",
+    "highlight": true,
     "capabilities": ["NLP"],
     "source": "https://www.anthropic.com/news/introducing-claude",
     "en": {
       "name": "Claude",
-      "description": "First release from Anthropic, focusing on helpfulness and safety (Constitutional AI).",
+      "description": "Anthropic's first public model, focused on safety and large context.",
       "coreTech": "Constitutional AI",
-      "features": ["High steerability", "Safety guardrails", "Large context"],
-      "useCases": ["Document summarization", "Safe corporate chat", "Legal analysis"]
+      "features": ["Safety focused", "Large context"],
+      "useCases": ["Summarization", "Safe chat"]
     },
     "zh": {
       "name": "Claude",
-      "description": "Anthropic的首款产品，专注于有用性和安全性（宪法AI）。",
-      "coreTech": "宪法AI (Constitutional AI)",
-      "features": ["高可控性", "安全护栏", "长文本支持"],
-      "useCases": ["文档摘要", "安全企业对话", "法律分析"]
+      "description": "Anthropic 的首个公开模型，主打安全性和超长上下文。",
+      "coreTech": "宪法 AI (Constitutional AI)",
+      "features": ["注重安全", "大上下文"],
+      "useCases": ["摘要", "安全对话"]
     }
   },
   {
-    "id": "gemini-1",
+    "id": "midjourney_v5",
+    "company": "Midjourney",
+    "releaseDate": "2023-03-15",
+    "params": "-",
+    "highlight": false,
+    "capabilities": ["Image Generation"],
+    "source": "https://docs.midjourney.com/docs/model-versions",
+    "en": {
+      "name": "Midjourney v5",
+      "description": "Achieved photorealism, famously solving the 'AI can't draw hands' issue.",
+      "coreTech": "Diffusion",
+      "features": ["Photorealism", "High detail"],
+      "useCases": ["Photography simulation"]
+    },
+    "zh": {
+      "name": "Midjourney v5",
+      "description": "实现了照片级真实感，解决了 AI 画不好手的梗。",
+      "coreTech": "扩散模型",
+      "features": ["照片级真实感", "高细节"],
+      "useCases": ["摄影模拟"]
+    }
+  },
+  {
+    "id": "runway_gen_2",
+    "company": "Runway",
+    "releaseDate": "2023-03-20",
+    "params": "-",
+    "highlight": false,
+    "capabilities": ["Video Generation"],
+    "source": "https://runwayml.com/blog/introducing-gen-2/",
+    "en": {
+      "name": "Gen-2",
+      "description": "The first commercially available text-to-video model.",
+      "coreTech": "Diffusion",
+      "features": ["Text to video", "Image to video"],
+      "useCases": ["Video production", "Advertising"]
+    },
+    "zh": {
+      "name": "Runway Gen-2",
+      "description": "首个商业可用的文生视频模型。",
+      "coreTech": "扩散模型",
+      "features": ["文生视频", "图生视频"],
+      "useCases": ["视频制作", "广告"]
+    }
+  },
+  {
+    "id": "autogpt",
+    "company": "Open Source",
+    "releaseDate": "2023-03-30",
+    "params": "-",
+    "highlight": false,
+    "capabilities": ["Agent"],
+    "source": "https://github.com/Significant-Gravitas/Auto-GPT",
+    "en": {
+      "name": "AutoGPT",
+      "description": "An experimental open-source attempt to make GPT-4 fully autonomous.",
+      "coreTech": "LLM Chaining / ReAct",
+      "features": ["Autonomous goal execution", "Internet access"],
+      "useCases": ["Task automation"]
+    },
+    "zh": {
+      "name": "AutoGPT",
+      "description": "一个实验性的开源项目，试图让 GPT-4 完全自主运行。",
+      "coreTech": "LLM 链式调用 / ReAct",
+      "features": ["自主目标执行", "联网能力"],
+      "useCases": ["任务自动化"]
+    }
+  },
+  {
+    "id": "segment_anything",
+    "company": "Meta",
+    "releaseDate": "2023-04-05",
+    "params": "-",
+    "highlight": false,
+    "capabilities": ["Vision"],
+    "source": "https://ai.meta.com/blog/segment-anything-foundation-model-image-segmentation/",
+    "en": {
+      "name": "Segment Anything Model (SAM)",
+      "description": "A foundation model for image segmentation.",
+      "coreTech": "Promptable Segmentation",
+      "features": ["Zero-shot segmentation", "Select any object"],
+      "useCases": ["Image editing", "Object tracking"]
+    },
+    "zh": {
+      "name": "Segment Anything Model (SAM)",
+      "description": "图像分割的基础模型。",
+      "coreTech": "可提示分割",
+      "features": ["零样本分割", "任意对象选择"],
+      "useCases": ["图像编辑", "对象追踪"]
+    }
+  },
+  {
+    "id": "palm_2",
+    "company": "Google",
+    "releaseDate": "2023-05-10",
+    "params": "Unknown",
+    "highlight": true,
+    "capabilities": ["NLP"],
+    "source": "https://blog.google/technology/ai/google-palm-2-ai-large-language-model/",
+    "en": {
+      "name": "PaLM 2",
+      "description": "Google's answer to GPT-4, powering Bard initially.",
+      "coreTech": "Compute-optimal scaling",
+      "features": ["Multilingual", "Reasoning", "Coding"],
+      "useCases": ["Chatbots", "Workspace integration"]
+    },
+    "zh": {
+      "name": "PaLM 2",
+      "description": "Google 对标 GPT-4 的模型，最初用于支持 Bard。",
+      "coreTech": "计算最优缩放",
+      "features": ["多语言", "推理", "编程"],
+      "useCases": ["聊天机器人", "办公套件集成"]
+    }
+  },
+  {
+    "id": "llama_2",
+    "company": "Meta",
+    "releaseDate": "2023-07-18",
+    "params": "7B/13B/70B",
+    "highlight": true,
+    "capabilities": ["NLP"],
+    "source": "https://ai.meta.com/blog/llama-2/",
+    "en": {
+      "name": "Llama 2",
+      "description": "The first commercially usable open-weight LLM that changed the landscape.",
+      "coreTech": "Optimized Transformer",
+      "features": ["Commercial license", "RLHF aligned"],
+      "useCases": ["Commercial applications", "Local deployment"]
+    },
+    "zh": {
+      "name": "Llama 2",
+      "description": "首个允许商业用途的开源权重 LLM，改变了行业格局。",
+      "coreTech": "优化 Transformer",
+      "features": ["商业许可", "RLHF 对齐"],
+      "useCases": ["商业应用", "本地部署"]
+    }
+  },
+  {
+    "id": "code_llama",
+    "company": "Meta",
+    "releaseDate": "2023-08-24",
+    "params": "7B/13B/34B",
+    "highlight": false,
+    "capabilities": ["Code"],
+    "source": "https://ai.meta.com/blog/code-llama-large-language-model-coding/",
+    "en": {
+      "name": "Code Llama",
+      "description": "Specialized version of Llama 2 for coding tasks.",
+      "coreTech": "Long context fine-tuning",
+      "features": ["Fill-in-the-middle", "Large context (100k)"],
+      "useCases": ["Code completion", "Refactoring"]
+    },
+    "zh": {
+      "name": "Code Llama",
+      "description": "Llama 2 的代码专用版本。",
+      "coreTech": "长上下文微调",
+      "features": ["中间填充", "大上下文 (100k)"],
+      "useCases": ["代码补全", "重构"]
+    }
+  },
+  {
+    "id": "falcon_180b",
+    "company": "TII",
+    "releaseDate": "2023-09-06",
+    "params": "180B",
+    "highlight": false,
+    "capabilities": ["NLP"],
+    "source": "https://falconllm.tii.ae/",
+    "en": {
+      "name": "Falcon 180B",
+      "description": "A massive open model that briefly held the top spot on the leaderboard.",
+      "coreTech": "Causal Decoder-only",
+      "features": ["Massive scale", "Open access"],
+      "useCases": ["Research", "Complex tasks"]
+    },
+    "zh": {
+      "name": "Falcon 180B",
+      "description": "来自阿联酋 TII 的超大开源模型，曾短暂占据榜首。",
+      "coreTech": "因果解码器",
+      "features": ["超大规模", "开放访问"],
+      "useCases": ["研究", "复杂任务"]
+    }
+  },
+  {
+    "id": "dall_e_3",
+    "company": "OpenAI",
+    "releaseDate": "2023-09-20",
+    "params": "Unknown",
+    "highlight": true,
+    "capabilities": ["Image Generation"],
+    "source": "https://openai.com/index/dall-e-3",
+    "en": {
+      "name": "DALL·E 3",
+      "description": "Integrated natively into ChatGPT, understanding complex prompts.",
+      "coreTech": "Image captioner training",
+      "features": ["Prompt adherence", "Text rendering"],
+      "useCases": ["Marketing", "Illustration"]
+    },
+    "zh": {
+      "name": "DALL·E 3",
+      "description": "原生集成到 ChatGPT 中，极大提升了对复杂提示词的理解能力。",
+      "coreTech": "图像描述训练",
+      "features": ["极佳的提示词遵循", "文本渲染能力"],
+      "useCases": ["营销", "插画"]
+    }
+  },
+  {
+    "id": "mistral_7b",
+    "company": "Mistral AI",
+    "releaseDate": "2023-09-27",
+    "params": "7B",
+    "highlight": true,
+    "capabilities": ["NLP"],
+    "source": "https://mistral.ai/news/announcing-mistral-7b/",
+    "en": {
+      "name": "Mistral 7B",
+      "description": "A small model that outperformed larger models like Llama 2 13B.",
+      "coreTech": "Sliding Window Attention",
+      "features": ["High efficiency", "Strong performance"],
+      "useCases": ["Local inference", "RAG"]
+    },
+    "zh": {
+      "name": "Mistral 7B",
+      "description": "一个小参数模型，性能却超越了 Llama 2 13B 等更大模型。",
+      "coreTech": "滑动窗口注意力",
+      "features": ["高效率", "强劲性能"],
+      "useCases": ["本地推理", "RAG"]
+    }
+  },
+  {
+    "id": "grok_1",
+    "company": "xAI",
+    "releaseDate": "2023-11-04",
+    "params": "314B",
+    "highlight": false,
+    "capabilities": ["NLP"],
+    "source": "https://x.ai/blog/grok",
+    "en": {
+      "name": "Grok-1",
+      "description": "Elon Musk's AI company debut, featuring real-time access to X (Twitter).",
+      "coreTech": "MoE",
+      "features": ["Real-time knowledge", "Rebellious personality"],
+      "useCases": ["News commentary", "Chat"]
+    },
+    "zh": {
+      "name": "Grok-1",
+      "description": "马斯克旗下 xAI 的首秀，具有实时访问 X (Twitter) 数据的能力。",
+      "coreTech": "MoE",
+      "features": ["实时知识", "反叛个性"],
+      "useCases": ["新闻评论", "聊天"]
+    }
+  },
+  {
+    "id": "yi_34b",
+    "company": "01.AI (Zero One)",
+    "releaseDate": "2023-11-06",
+    "params": "34B",
+    "highlight": false,
+    "capabilities": ["NLP"],
+    "source": "https://huggingface.co/01-ai/Yi-34B",
+    "en": {
+      "name": "Yi-34B",
+      "description": "High-performance bilingual (English/Chinese) model with large context.",
+      "coreTech": "Transformer",
+      "features": ["200k context window", "Strong bilingual performance"],
+      "useCases": ["Long document processing", "Cross-lingual tasks"]
+    },
+    "zh": {
+      "name": "Yi-34B (零一万物)",
+      "description": "高性能的中英双语模型，以长窗口能力著称。",
+      "coreTech": "Transformer",
+      "features": ["200k 上下文窗口", "强劲双语性能"],
+      "useCases": ["长文档处理", "跨语言任务"]
+    }
+  },
+  {
+    "id": "gpt_4_turbo",
+    "company": "OpenAI",
+    "releaseDate": "2023-11-06",
+    "params": "Unknown",
+    "highlight": true,
+    "capabilities": ["NLP"],
+    "source": "https://openai.com/blog/new-models-and-developer-products-announced-at-devday",
+    "en": {
+      "name": "GPT-4 Turbo",
+      "description": "Faster, cheaper, and with a massive 128k context window.",
+      "coreTech": "Optimized GPT-4",
+      "features": ["128k context", "JSON mode"],
+      "useCases": ["Document analysis", "App development"]
+    },
+    "zh": {
+      "name": "GPT-4 Turbo",
+      "description": "更快、更便宜，且拥有 128k 的超大上下文窗口。",
+      "coreTech": "优化版 GPT-4",
+      "features": ["128k 上下文", "JSON 模式"],
+      "useCases": ["文档分析", "应用开发"]
+    }
+  },
+  {
+    "id": "mamba",
+    "company": "Carnegie Mellon / Princeton",
+    "releaseDate": "2023-12-04",
+    "params": "2.8B",
+    "highlight": true,
+    "capabilities": ["NLP", "Architecture"],
+    "source": "https://arxiv.org/abs/2312.00752",
+    "en": {
+      "name": "Mamba",
+      "description": "Proposed a State Space Model (SSM) architecture as a linear-time alternative to Transformers.",
+      "coreTech": "Selective State Space Model",
+      "features": ["Linear time scaling", "Fast inference"],
+      "useCases": ["Long sequence modeling", "Efficient inference"]
+    },
+    "zh": {
+      "name": "Mamba (架构)",
+      "description": "提出了状态空间模型 (SSM) 架构，作为 Transformer 的线性时间复杂度替代方案。",
+      "coreTech": "选择性状态空间模型",
+      "features": ["线性时间扩展", "快速推理"],
+      "useCases": ["长序列建模", "高效推理"]
+    }
+  },
+  {
+    "id": "gemini_1",
     "company": "Google",
     "releaseDate": "2023-12-06",
-    "params": "Various",
+    "params": "Nano/Pro/Ultra",
     "highlight": true,
-    "importance": 4,
-    "capabilities": ["Multimodal", "NLP", "CV", "Audio", "Video", "Code"],
+    "capabilities": ["Multimodal"],
     "source": "https://blog.google/technology/ai/google-gemini-ai/",
     "en": {
       "name": "Gemini 1.0",
-      "description": "Natively multimodal model built from the ground up for seamless reasoning across text, images, and audio.",
-      "coreTech": "Native Multimodal Architecture",
-      "features": ["Native audio/video understanding", "Sophisticated reasoning", "Efficient scaling (Nano/Pro/Ultra)"],
-      "useCases": ["Video understanding", "Multimodal interaction", "Scientific reasoning"]
+      "description": "Google's first natively multimodal model.",
+      "coreTech": "Native Multimodal Training",
+      "features": ["Video/Audio/Text understanding", "Native multimodality"],
+      "useCases": ["Complex multimodal tasks"]
     },
     "zh": {
       "name": "Gemini 1.0",
-      "description": "原生多模态模型，从底层构建，可跨文本、图像和音频进行无缝推理。",
-      "coreTech": "原生多模态架构",
-      "features": ["原生音视频理解", "复杂推理", "高效扩展 (Nano/Pro/Ultra)"],
-      "useCases": ["视频理解", "多模态交互", "科学推理"]
+      "description": "Google 首个原生多模态模型。",
+      "coreTech": "原生多模态训练",
+      "features": ["视频/音频/文本理解", "原生多模态"],
+      "useCases": ["复杂多模态任务"]
+    }
+  },
+  {
+    "id": "mixtral_8x7b",
+    "company": "Mistral AI",
+    "releaseDate": "2023-12-11",
+    "params": "47B (Active 13B)",
+    "highlight": true,
+    "capabilities": ["NLP"],
+    "source": "https://mistral.ai/news/mixtral-of-experts/",
+    "en": {
+      "name": "Mixtral 8x7B",
+      "description": "High-performance open-source Mixture of Experts model.",
+      "coreTech": "Sparse Mixture-of-Experts (SMoE)",
+      "features": ["Fast inference", "Beats GPT-3.5"],
+      "useCases": ["Enterprise local deployment"]
+    },
+    "zh": {
+      "name": "Mixtral 8x7B",
+      "description": "高性能的开源混合专家模型（MoE）。",
+      "coreTech": "稀疏混合专家 (SMoE)",
+      "features": ["推理速度快", "超越 GPT-3.5"],
+      "useCases": ["企业本地部署"]
     }
   },
   {
@@ -222,118 +971,596 @@
     "releaseDate": "2024-02-15",
     "params": "Unknown",
     "highlight": true,
-    "importance": 4,
-    "capabilities": ["Video", "CV"],
+    "capabilities": ["Video Generation"],
     "source": "https://openai.com/sora",
     "en": {
       "name": "Sora",
-      "description": "Text-to-video model capable of generating highly realistic and imaginative scenes.",
-      "coreTech": "Diffusion Transformer",
-      "features": ["Physics simulation", "60s video generation", "Consistency"],
-      "useCases": ["Video production", "Creative design", "Simulation"]
+      "description": "Text-to-video model generating realistic 1-minute videos.",
+      "coreTech": "Diffusion Transformer (DiT)",
+      "features": ["Physics simulation", "Consistency", "1-minute duration"],
+      "useCases": ["Movie prototyping", "Content creation"]
     },
     "zh": {
       "name": "Sora",
-      "description": "能够生成高度逼真和富有想象力场景的文生视频模型。",
+      "description": "生成逼真一分钟视频的文生视频模型，震撼业界。",
       "coreTech": "扩散 Transformer (DiT)",
-      "features": ["物理世界模拟", "60秒长视频", "画面一致性"],
-      "useCases": ["视频制作", "创意设计", "模拟仿真"]
+      "features": ["物理模拟", "一致性保持", "1分钟时长"],
+      "useCases": ["电影原型", "内容创作"]
     }
   },
   {
-    "id": "gemini-1.5",
+    "id": "gemini_1_5_pro",
     "company": "Google",
     "releaseDate": "2024-02-15",
     "params": "Unknown",
     "highlight": true,
-    "importance": 4,
-    "capabilities": ["Multimodal", "NLP", "CV", "Audio", "Video", "Code"],
+    "capabilities": ["NLP", "Multimodal"],
     "source": "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/",
     "en": {
       "name": "Gemini 1.5 Pro",
-      "description": "Introduced massive context window (1M+ tokens), enabling analysis of vast amounts of information.",
-      "coreTech": "MoE + Long Context Architecture",
-      "features": ["1M+ Token Context", "In-context learning", "Cross-modal reasoning"],
-      "useCases": ["Full codebase analysis", "Movie analysis", "Large document extraction"]
+      "description": "Introduced a massive 1M+ (later 2M) token context window.",
+      "coreTech": "MoE + Long Context",
+      "features": ["1M+ Token Context", "Recall accuracy"],
+      "useCases": ["Whole codebase analysis", "Book analysis"]
     },
     "zh": {
       "name": "Gemini 1.5 Pro",
-      "description": "引入了百万级Token的超长上下文窗口，能够分析海量信息。",
-      "coreTech": "MoE + 长上下文架构",
-      "features": ["100万+ Token 上下文", "上下文学习", "跨模态推理"],
-      "useCases": ["全库代码分析", "电影内容分析", "大文档提取"]
+      "description": "推出了 100 万（后增至 200 万）Token 的超大上下文窗口。",
+      "coreTech": "MoE + 长上下文",
+      "features": ["百万级上下文", "召回准确率"],
+      "useCases": ["全代码库分析", "书籍分析"]
     }
   },
   {
-    "id": "llama-3",
+    "id": "gemma_1",
+    "company": "Google",
+    "releaseDate": "2024-02-21",
+    "params": "2B/7B",
+    "highlight": false,
+    "capabilities": ["NLP"],
+    "source": "https://blog.google/technology/developers/gemma-open-models/",
+    "en": {
+      "name": "Gemma",
+      "description": "Google's contribution to open models, built from Gemini research.",
+      "coreTech": "Transformer",
+      "features": ["Lightweight", "Research accessible"],
+      "useCases": ["Mobile deployment", "Academic research"]
+    },
+    "zh": {
+      "name": "Gemma",
+      "description": "Google 基于 Gemini 技术构建的轻量级开源（开放权重）模型。",
+      "coreTech": "Transformer",
+      "features": ["轻量化", "学术友好的"],
+      "useCases": ["移动端部署", "学术研究"]
+    }
+  },
+  {
+    "id": "claude_3",
+    "company": "Anthropic",
+    "releaseDate": "2024-03-04",
+    "params": "Haiku/Sonnet/Opus",
+    "highlight": true,
+    "capabilities": ["NLP", "Multimodal"],
+    "source": "https://www.anthropic.com/news/claude-3-family",
+    "en": {
+      "name": "Claude 3 Family",
+      "description": "Opus model surpassed GPT-4 on many benchmarks.",
+      "coreTech": "-",
+      "features": ["Near-human nuance", "Strong vision"],
+      "useCases": ["Complex reasoning", "Creative writing"]
+    },
+    "zh": {
+      "name": "Claude 3 系列",
+      "description": "Opus 模型在多项基准测试中超越了 GPT-4。",
+      "coreTech": "-",
+      "features": ["接近人类的语感", "强大的视觉能力"],
+      "useCases": ["复杂推理", "创意写作"]
+    }
+  },
+  {
+    "id": "devin",
+    "company": "Cognition AI",
+    "releaseDate": "2024-03-12",
+    "params": "-",
+    "highlight": true,
+    "capabilities": ["Agent", "Code"],
+    "source": "https://www.cognition-labs.com/introducing-devin",
+    "en": {
+      "name": "Devin",
+      "description": "The first fully autonomous AI software engineer.",
+      "coreTech": "Long-term reasoning & planning",
+      "features": ["End-to-end coding", "Self-debugging", "Deployment"],
+      "useCases": ["Software engineering", "Bug fixing"]
+    },
+    "zh": {
+      "name": "Devin",
+      "description": "首个完全自主的 AI 软件工程师，展示了 Agent 在复杂工程中的潜力。",
+      "coreTech": "长期推理与规划",
+      "features": ["端到端编程", "自我调试", "部署能力"],
+      "useCases": ["软件工程", "Bug 修复"]
+    }
+  },
+  {
+    "id": "dbrx",
+    "company": "Databricks",
+    "releaseDate": "2024-03-27",
+    "params": "132B",
+    "highlight": false,
+    "capabilities": ["NLP"],
+    "source": "https://www.databricks.com/blog/introducing-dbrx-new-state-art-open-llm",
+    "en": {
+      "name": "DBRX",
+      "description": "Open source fine-grained MoE model tailored for coding.",
+      "coreTech": "Fine-grained MoE",
+      "features": ["Coding prowess", "Open weights"],
+      "useCases": ["Code generation"]
+    },
+    "zh": {
+      "name": "DBRX",
+      "description": "专为编程优化的开源细粒度 MoE 模型。",
+      "coreTech": "细粒度 MoE",
+      "features": ["编程能力强", "权重开源"],
+      "useCases": ["代码生成"]
+    }
+  },
+  {
+    "id": "command_r_plus",
+    "company": "Cohere",
+    "releaseDate": "2024-04-04",
+    "params": "104B",
+    "highlight": false,
+    "capabilities": ["NLP"],
+    "source": "https://cohere.com/blog/command-r-plus-microsoft-azure",
+    "en": {
+      "name": "Command R+",
+      "description": "Model optimized specifically for RAG and tool use.",
+      "coreTech": "Transformer",
+      "features": ["Strong RAG capabilities", "Tool use citations"],
+      "useCases": ["Enterprise search", "Knowledge management"]
+    },
+    "zh": {
+      "name": "Command R+",
+      "description": "专为 RAG（检索增强生成）和工具使用优化的模型。",
+      "coreTech": "Transformer",
+      "features": ["强大的 RAG 能力", "工具调用与引用"],
+      "useCases": ["企业搜索", "知识管理"]
+    }
+  },
+  {
+    "id": "llama_3",
     "company": "Meta",
     "releaseDate": "2024-04-18",
-    "params": "8B / 70B / 400B+",
+    "params": "8B/70B",
     "highlight": true,
-    "importance": 4,
-    "capabilities": ["NLP", "Code"],
+    "capabilities": ["NLP"],
     "source": "https://ai.meta.com/blog/meta-llama-3/",
     "en": {
       "name": "Llama 3",
-      "description": "Significant leap in capability for open-weights models.",
-      "coreTech": "Optimized Dense Transformer",
-      "features": ["Improved tokenizer", "GQA efficiency", "High reasoning benchmarks"],
-      "useCases": ["Open source development", "Local AI agents", "Text classification"]
+      "description": "State-of-the-art open models, pushing 8B and 70B performance limits.",
+      "coreTech": "Massive training data (15T tokens)",
+      "features": ["Improved reasoning", "Diversity"],
+      "useCases": ["Chat", "Reasoning"]
     },
     "zh": {
       "name": "Llama 3",
-      "description": "开放权重模型能力的巨大飞跃。",
-      "coreTech": "优化密集 Transformer",
-      "features": ["改进的分词器", "GQA 效率", "高推理基准分"],
-      "useCases": ["开源开发", "本地 AI 智能体", "文本分类"]
+      "description": "最强开源模型之一，推高了 8B 和 70B 模型的性能上限。",
+      "coreTech": "海量训练数据 (15T tokens)",
+      "features": ["推理增强", "多样性"],
+      "useCases": ["聊天", "推理"]
     }
   },
   {
-    "id": "gpt-4o",
+    "id": "gpt_4o",
     "company": "OpenAI",
     "releaseDate": "2024-05-13",
     "params": "Unknown",
     "highlight": true,
-    "importance": 4,
-    "capabilities": ["Multimodal", "NLP", "CV", "Audio", "Video"],
+    "capabilities": ["Multimodal"],
     "source": "https://openai.com/index/hello-gpt-4o/",
     "en": {
       "name": "GPT-4o",
-      "description": "Flagship \"omni\" model with real-time audio, vision, and text capabilities.",
-      "coreTech": "End-to-end Multimodal Omni",
-      "features": ["Real-time audio response", "Emotional intonation", "Faster inference"],
-      "useCases": ["Real-time translation", "Voice assistant", "Vision interaction"]
+      "description": "Omni model capable of real-time audio/video/text interaction.",
+      "coreTech": "End-to-End Multimodal",
+      "features": ["Real-time voice", "Emotion detection", "Speed"],
+      "useCases": ["Voice assistants", "Real-time translation"]
     },
     "zh": {
       "name": "GPT-4o",
-      "description": "旗舰级\"全能\"模型，具备实时音频、视觉和文本处理能力。",
-      "coreTech": "端到端全模态模型",
-      "features": ["实时音频响应", "情感语调", "更快的推理速度"],
-      "useCases": ["实时翻译", "语音助手", "视觉交互"]
+      "description": "全能模型，支持实时音频/视频/文本交互。",
+      "coreTech": "端到端多模态",
+      "features": ["实时语音", "情感检测", "极快响应速度"],
+      "useCases": ["语音助手", "实时翻译"]
     }
   },
   {
-    "id": "gemini-2.5",
-    "company": "Google",
-    "releaseDate": "2025-01-20",
-    "params": "Unknown",
+    "id": "kling",
+    "company": "Kuaishou (快手)",
+    "releaseDate": "2024-06-06",
+    "params": "-",
     "highlight": true,
-    "importance": 5,
-    "capabilities": ["Multimodal", "NLP", "Code"],
-    "source": "https://blog.google/technology/google-deepmind/",
+    "capabilities": ["Video Generation"],
+    "source": "https://kling.kuaishou.com/",
     "en": {
-      "name": "Gemini 2.5",
-      "description": "Next generation efficiency and reasoning capabilities.",
-      "coreTech": "Thinking & Reasoning Engine",
-      "features": ["Enhanced thinking process", "Controllable thinking budget", "Superior coding"],
-      "useCases": ["Complex problem solving", "Agentic workflows", "Real-time adaptation"]
+      "name": "Kling",
+      "description": "High-quality video generation model rivaling Sora, available to the public.",
+      "coreTech": "3D Spatiotemporal Attention",
+      "features": ["1080p resolution", "2-minute generation", "Realistic motion"],
+      "useCases": ["Short video creation", "Film"]
     },
     "zh": {
-      "name": "Gemini 2.5",
-      "description": "下一代效率和推理能力。",
-      "coreTech": "思考与推理引擎",
-      "features": ["增强的思考过程", "可控的思考预算", "卓越的编程能力"],
-      "useCases": ["复杂问题解决", "智能体工作流", "实时适应"]
+      "name": "Kling (可灵)",
+      "description": "快手推出的高质量视频生成模型，效果匹敌 Sora 且率先公测。",
+      "coreTech": "3D 时空注意力机制",
+      "features": ["1080p 分辨率", "2分钟长视频", "逼真运动"],
+      "useCases": ["短视频创作", "影视"]
+    }
+  },
+  {
+    "id": "qwen_2",
+    "company": "Alibaba",
+    "releaseDate": "2024-06-07",
+    "params": "7B/72B",
+    "highlight": false,
+    "capabilities": ["NLP"],
+    "source": "https://qwenlm.github.io/blog/qwen2/",
+    "en": {
+      "name": "Qwen 2",
+      "description": "China's leading open-weight LLM series beating many western counterparts.",
+      "coreTech": "Transformer",
+      "features": ["Multilingual (strong Chinese)", "Math/Coding"],
+      "useCases": ["Asian market applications", "Coding"]
+    },
+    "zh": {
+      "name": "通义千问 Qwen 2",
+      "description": "中国领先的开源 LLM 系列，性能击败许多西方同类模型。",
+      "coreTech": "Transformer",
+      "features": ["多语言 (中文强)", "数学/代码"],
+      "useCases": ["亚洲市场应用", "编程"]
+    }
+  },
+  {
+    "id": "apple_intelligence",
+    "company": "Apple",
+    "releaseDate": "2024-06-10",
+    "params": "3B (On-device)",
+    "highlight": true,
+    "capabilities": ["NLP", "OS Integration"],
+    "source": "https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/",
+    "en": {
+      "name": "Apple Intelligence",
+      "description": "Deep integration of generative AI into iOS/macOS using on-device LoRA adapters.",
+      "coreTech": "On-device LLM + Private Cloud Compute",
+      "features": ["Privacy focused", "System-wide writing tools", "Siri upgrade"],
+      "useCases": ["Personal context", "Email summarization"]
+    },
+    "zh": {
+      "name": "Apple Intelligence",
+      "description": "将生成式 AI 深度集成到 iOS/macOS 系统中，强调端侧隐私。",
+      "coreTech": "端侧 LLM + 私有云计算",
+      "features": ["隐私优先", "系统级写作工具", "Siri 升级"],
+      "useCases": ["个人语境理解", "邮件摘要"]
+    }
+  },
+  {
+    "id": "runway_gen_3",
+    "company": "Runway",
+    "releaseDate": "2024-06-17",
+    "params": "Unknown",
+    "highlight": false,
+    "capabilities": ["Video Generation"],
+    "source": "https://runwayml.com/blog/introducing-gen-3-alpha/",
+    "en": {
+      "name": "Gen-3 Alpha",
+      "description": "High fidelity video generation model.",
+      "coreTech": "General World Model",
+      "features": ["Photorealistic video", "Temporal control"],
+      "useCases": ["Film production"]
+    },
+    "zh": {
+      "name": "Runway Gen-3 Alpha",
+      "description": "高保真视频生成模型。",
+      "coreTech": "通用世界模型",
+      "features": ["照片级视频", "时间控制"],
+      "useCases": ["影视制作"]
+    }
+  },
+  {
+    "id": "claude_3_5_sonnet",
+    "company": "Anthropic",
+    "releaseDate": "2024-06-20",
+    "params": "Unknown",
+    "highlight": true,
+    "capabilities": ["NLP", "Code"],
+    "source": "https://www.anthropic.com/news/claude-3-5-sonnet",
+    "en": {
+      "name": "Claude 3.5 Sonnet",
+      "description": "A mid-sized model that outperformed GPT-4o and Claude 3 Opus, particularly in coding.",
+      "coreTech": "-",
+      "features": ["Coding mastery", "Artifacts UI"],
+      "useCases": ["App development", "Technical writing"]
+    },
+    "zh": {
+      "name": "Claude 3.5 Sonnet",
+      "description": "中等体量模型，性能却超越了 GPT-4o 和 Claude 3 Opus，尤其是编程能力。",
+      "coreTech": "-",
+      "features": ["编程大师", "Artifacts 界面交互"],
+      "useCases": ["应用开发", "技术写作"]
+    }
+  },
+  {
+    "id": "llama_3_1",
+    "company": "Meta",
+    "releaseDate": "2024-07-23",
+    "params": "405B",
+    "highlight": true,
+    "capabilities": ["NLP"],
+    "source": "https://ai.meta.com/blog/meta-llama-3-1/",
+    "en": {
+      "name": "Llama 3.1 405B",
+      "description": "The largest open-weights model to date, rivaling top closed models.",
+      "coreTech": "Dense Transformer",
+      "features": ["Distillation teacher", "SOTA Open Source"],
+      "useCases": ["Synthetic data generation", "Research"]
+    },
+    "zh": {
+      "name": "Llama 3.1 405B",
+      "description": "迄今为止最大的开源权重模型，性能匹敌顶级闭源模型。",
+      "coreTech": "稠密 Transformer",
+      "features": ["蒸馏老师模型", "SOTA 开源性能"],
+      "useCases": ["合成数据生成", "研究"]
+    }
+  },
+  {
+    "id": "flux_1",
+    "company": "Black Forest Labs",
+    "releaseDate": "2024-08-01",
+    "params": "12B",
+    "highlight": true,
+    "capabilities": ["Image Generation"],
+    "source": "https://blackforestlabs.ai/announcing-black-forest-labs/",
+    "en": {
+      "name": "Flux.1",
+      "description": "Open weights image model that surpassed Midjourney in text rendering and prompt adherence.",
+      "coreTech": "Flow Matching",
+      "features": ["Text rendering", "Complex instruction following"],
+      "useCases": ["Design", "Typography"]
+    },
+    "zh": {
+      "name": "Flux.1",
+      "description": "开源权重图像模型，在文本渲染和提示词遵循上超越了 Midjourney。",
+      "coreTech": "流匹配 (Flow Matching)",
+      "features": ["文本渲染", "复杂指令遵循"],
+      "useCases": ["设计", "排版"]
+    }
+  },
+  {
+    "id": "grok_2",
+    "company": "xAI",
+    "releaseDate": "2024-08-14",
+    "params": "Unknown",
+    "highlight": false,
+    "capabilities": ["NLP", "Image Generation"],
+    "source": "https://x.ai/blog/grok-2",
+    "en": {
+      "name": "Grok-2",
+      "description": "Significant performance jump, featuring Flux.1 integration for uncensored image generation.",
+      "coreTech": "-",
+      "features": ["Real-time X data", "Flux image generation"],
+      "useCases": ["Social media", "Visual creation"]
+    },
+    "zh": {
+      "name": "Grok-2",
+      "description": "性能大幅提升，并集成了 Flux.1 用于图像生成（限制较少）。",
+      "coreTech": "-",
+      "features": ["实时 X 数据", "Flux 图像生成"],
+      "useCases": ["社交媒体", "视觉创作"]
+    }
+  },
+  {
+    "id": "minimax_video_01",
+    "company": "MiniMax",
+    "releaseDate": "2024-09-02",
+    "params": "-",
+    "highlight": false,
+    "capabilities": ["Video Generation"],
+    "source": "https://www.minimaxi.com/video-01",
+    "en": {
+      "name": "MiniMax Video-01",
+      "description": "Video generation model capable of high fidelity and complex motion.",
+      "coreTech": "DiT",
+      "features": ["Character consistency", "High frame rate"],
+      "useCases": ["Entertainment", "Virtual idols"]
+    },
+    "zh": {
+      "name": "MiniMax Video-01",
+      "description": "具备高保真度和复杂运动生成能力的视频模型。",
+      "coreTech": "DiT",
+      "features": ["角色一致性", "高帧率"],
+      "useCases": ["娱乐", "虚拟偶像"]
+    }
+  },
+  {
+    "id": "deepseek_v2_5",
+    "company": "DeepSeek",
+    "releaseDate": "2024-09-05",
+    "params": "236B",
+    "highlight": false,
+    "capabilities": ["NLP", "Code"],
+    "source": "https://api-docs.deepseek.com/news/news0905",
+    "en": {
+      "name": "DeepSeek-V2.5",
+      "description": "Merged chat and coding models, offering extreme cost-efficiency.",
+      "coreTech": "MLA (Multi-head Latent Attention) + MoE",
+      "features": ["Cheap inference", "Strong coding"],
+      "useCases": ["Coding assistant", "API integration"]
+    },
+    "zh": {
+      "name": "DeepSeek-V2.5",
+      "description": "合并了对话和代码模型，提供极致的性价比。",
+      "coreTech": "MLA (多头潜在注意力) + MoE",
+      "features": ["低成本推理", "强劲编程能力"],
+      "useCases": ["编程助手", "API 集成"]
+    }
+  },
+  {
+    "id": "pixtral_12b",
+    "company": "Mistral AI",
+    "releaseDate": "2024-09-11",
+    "params": "12B",
+    "highlight": false,
+    "capabilities": ["Multimodal"],
+    "source": "https://mistral.ai/news/pixtral-12b/",
+    "en": {
+      "name": "Pixtral 12B",
+      "description": "Mistral's first multimodal model allowing image input.",
+      "coreTech": "Vision Encoder + LLM",
+      "features": ["Image understanding", "Efficient size"],
+      "useCases": ["Image captioning", "OCR"]
+    },
+    "zh": {
+      "name": "Pixtral 12B",
+      "description": "Mistral 的首个多模态模型，支持图像输入。",
+      "coreTech": "视觉编码器 + LLM",
+      "features": ["图像理解", "高效尺寸"],
+      "useCases": ["图像描述", "OCR"]
+    }
+  },
+  {
+    "id": "o1_preview",
+    "company": "OpenAI",
+    "releaseDate": "2024-09-12",
+    "params": "Unknown",
+    "highlight": true,
+    "capabilities": ["Reasoning"],
+    "source": "https://openai.com/index/learning-to-reason-with-llms/",
+    "en": {
+      "name": "OpenAI o1-preview",
+      "description": "The 'Strawberry' model focused on complex reasoning chains.",
+      "coreTech": "Chain of Thought Training (RL)",
+      "features": ["Self-correction", "PhD level science/math"],
+      "useCases": ["Math", "Scientific Research", "Hard Logic"]
+    },
+    "zh": {
+      "name": "OpenAI o1-preview (草莓)",
+      "description": "专注于复杂推理链的模型，会“思考”后再回答。",
+      "coreTech": "思维链训练 (RL)",
+      "features": ["自我纠错", "博士级科学/数学能力"],
+      "useCases": ["数学", "科研", "硬逻辑"]
+    }
+  },
+  {
+    "id": "qwen_2_5",
+    "company": "Alibaba",
+    "releaseDate": "2024-09-19",
+    "params": "0.5B - 72B",
+    "highlight": true,
+    "capabilities": ["NLP", "Code", "Math"],
+    "source": "https://qwenlm.github.io/blog/qwen2.5/",
+    "en": {
+      "name": "Qwen 2.5",
+      "description": "The largest open-source release to date, dominating benchmarks across coding and math.",
+      "coreTech": "Massive dataset training (18T tokens)",
+      "features": ["SOTA Math/Code", "Wide range of sizes"],
+      "useCases": ["General purpose", "Science agents"]
+    },
+    "zh": {
+      "name": "通义千问 Qwen 2.5",
+      "description": "迄今最重磅的开源发布之一，在编程和数学基准测试中统治力极强。",
+      "coreTech": "海量数据训练 (18T tokens)",
+      "features": ["SOTA 级数学/代码能力", "全尺寸覆盖"],
+      "useCases": ["通用场景", "科学智能体"]
+    }
+  },
+  {
+    "id": "llama_3_2_vision",
+    "company": "Meta",
+    "releaseDate": "2024-09-25",
+    "params": "11B/90B",
+    "highlight": false,
+    "capabilities": ["Multimodal"],
+    "source": "https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/",
+    "en": {
+      "name": "Llama 3.2 Vision",
+      "description": "Added vision capabilities to the Llama series.",
+      "coreTech": "Vision Adapter",
+      "features": ["Image understanding", "Chart analysis"],
+      "useCases": ["Mobile apps", "Visual Q&A"]
+    },
+    "zh": {
+      "name": "Llama 3.2 Vision",
+      "description": "为 Llama 系列增加了视觉能力。",
+      "coreTech": "视觉适配器",
+      "features": ["图像理解", "图表分析"],
+      "useCases": ["移动应用", "视觉问答"]
+    }
+  },
+  {
+    "id": "janus_deepseek",
+    "company": "DeepSeek",
+    "releaseDate": "2024-10-18",
+    "params": "1.3B",
+    "highlight": false,
+    "capabilities": ["Multimodal"],
+    "source": "https://arxiv.org/abs/2410.13848",
+    "en": {
+      "name": "Janus",
+      "description": "Unified multimodal understanding and generation in a single model.",
+      "coreTech": "Decoupled Visual Encoding",
+      "features": ["Understanding & Generation", "High efficiency"],
+      "useCases": ["Visual conversation", "Image creation"]
+    },
+    "zh": {
+      "name": "Janus (DeepSeek)",
+      "description": "在一个模型中统一了多模态理解和生成能力。",
+      "coreTech": "解耦视觉编码",
+      "features": ["理解与生成一体", "高效率"],
+      "useCases": ["视觉对话", "图像创作"]
+    }
+  },
+  {
+    "id": "anthropic_computer_use",
+    "company": "Anthropic",
+    "releaseDate": "2024-10-22",
+    "params": "-",
+    "highlight": true,
+    "capabilities": ["Agent"],
+    "source": "https://www.anthropic.com/news/3-5-models-and-computer-use",
+    "en": {
+      "name": "Claude 3.5 Sonnet (New) + Computer Use",
+      "description": "Ability for the AI to control a computer cursor and type like a human.",
+      "coreTech": "GUI Agent",
+      "features": ["Screen operation", "Workflow automation"],
+      "useCases": ["Data entry", "Software testing"]
+    },
+    "zh": {
+      "name": "Claude 3.5 Sonnet (新版) + Computer Use",
+      "description": "赋予 AI 像人类一样控制电脑光标和键盘的能力。",
+      "coreTech": "GUI 智能体",
+      "features": ["屏幕操作", "工作流自动化"],
+      "useCases": ["数据录入", "软件测试"]
+    }
+  },
+  {
+    "id": "gemini_2_0_flash",
+    "company": "Google",
+    "releaseDate": "2024-12-11",
+    "params": "Unknown",
+    "highlight": true,
+    "capabilities": ["Multimodal", "Agent"],
+    "source": "https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/",
+    "en": {
+      "name": "Gemini 2.0 Flash",
+      "description": "Next-gen efficient model with advanced multimodal reasoning and agentic capabilities.",
+      "coreTech": "Multimodal MoE",
+      "features": ["Low latency", "Improved reasoning", "Thinking mode"],
+      "useCases": ["Real-time agents", "Complex workflows"]
+    },
+    "zh": {
+      "name": "Gemini 2.0 Flash",
+      "description": "下一代高效模型，具备先进的多模态推理和 Agent 能力。",
+      "coreTech": "多模态 MoE",
+      "features": ["低延迟", "推理增强", "思考模式"],
+      "useCases": ["实时智能体", "复杂工作流"]
     }
   }
 ]
